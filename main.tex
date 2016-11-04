@@ -79,206 +79,168 @@ Para responder estas preguntas decidimos realizar en los sujetos el siguiente pr
     
     \begin{figure}
         \centering
-        \includegraphics[width=0.9\textwidth]{Imagenes/TransferenciaResultados.png}
-        \caption{Orientaciones y simetrias para los estimulos de ángulos}
-        \label{fig:DatosBrutos}
+        \includegraphics[width=\textwidth]{Imagenes/TransferenciaHeatmap.png}
+        \caption{Mediciones para todos los sujetos comparando valores de umbral antes y despues del entrenamiento. Cada fila representa un sujeto.}
+        \label{fig:DatosTest}
     \end{figure}
     
     \begin{figure}
         \centering
-        \includegraphics[width=0.9\textwidth]{Imagenes/TransferenciaResultadosEnAngulos.png}
-        \caption{Orientaciones y simetrias para los estimulos de paralelismo.}
-        \label{fig:DatosBrutosEnAngulos}
+        \includegraphics[width=\textwidth]{Imagenes/TransferenciaEntrenamientoNuevo.png}
+        \caption{Evolucion de la capacidad de distinguir las categorias propuestas en funcion del entrenamiento. Cada color representa un usuario. En cada dias se realizan tres niveles diferentes, uno con feedback, uno sin, y otro con feedback igual al inicial.}
+        \label{fig:DatosEntrenamiento}
     \end{figure}
-
+    
 \section{Resultados que se derivan de las mediciones}
 
-El primer resultado que se puede observar a simple vista es que el entrenamiento satura muy rapido. En otras palabras que los sujetos alcanzan una performance alta al concluir el primer nivel de entrenamiento (que tiene feedback) y que ese nivel se mantiene mas o menos estable a lo largo de todo el proceso posterior de entrenamiento. Esto nos lleva a hacernos la siguiente pregunta:
+El primer resultado que se puede observar a simple vista es que el entrenamiento satura muy rápido. En otras palabras que los sujetos alcanzan una performance alta al concluir el primer nivel de entrenamiento (que tiene feedback) y que ese nivel se mantiene mas o menos estable a lo largo de todo el proceso posterior de entrenamiento, excepto para un usuario que muestra una progresión durante el primer día. Tambien se puede observar que el proceso de mejora es mas notorio en el caso de los ángulos que en el caso del paralelismo. 
 
-\textbf{¿Cuan rápido satura el entrenamiento?}
+\subsection{Entrenamiento}
 
 Para responder esta pregunta tomamos todas las medidas de umbral correspondientes a la categoria entrenada, separadas por sujeto. A esta secuencia de datos, los ajustamos con el siguiente modelo:
 
+
 \begin{equation} \label{ec:RegresionEntrenamiento}
-    Y(i,t) = \alpha_i + \beta \cdot t + \gamma_{inicial} \Theta_{inicial} + \gamma_{final} \Theta_{final}
+    %Y(i,t) = \alpha_i + \beta \cdot t + \gamma_{inicial} \Theta_{inicial} + \gamma_{final} \Theta_{final}
+    Y(i,t) = \beta \cdot t + cte
 \end{equation}
 
-donde i representa el sujeto, t el numero de nivel (ordenados segun se realizaron), $\Theta$ un indicador de si el t corresponde al valor inicial o final de la serie (los tests), $\gamma$ el valor en que cambia el nivel medio de performance entre el test inicial o final y el entrenamiento (agrupado para todos los sujetos), $\alpha_{i}$ un factor fijo (parametro que se ajusta agrupando por categoria) que mide la performance media por sujeto, y $\beta$ la pendiente de la performance durante el entrenamiento.
+%donde i representa el sujeto, t el numero de nivel (o de mediciones ordenadas segun se realizaron), $\Theta$ un indicador de si el t corresponde al valor inicial o final de la serie (los tests), $\gamma$ el valor en que cambia el nivel medio de performance entre el test inicial o final y el entrenamiento (agrupado para todos los sujetos), $\alpha_{i}$ un factor fijo (parametro que ajusta sumando una constante agrupando por categoria) que mide la performance media por sujeto, y $\beta$ la pendiente de la performance durante el entrenamiento.
 
-Expandida para un caso de dos sesiones de entrenamiento, y tres sujetos, quedaria de la forma \ref{ec:MatrixExpandida}
+donde i representa el sujeto, t el numero de nivel (o de mediciones ordenadas segun se realizaron), $\beta$ la pendiente de la performance durante el entrenamiento, y cte una constante que brinda la libertad de ajustar la pendiente ingorando el valor medio de los datos. Recordemos que un $\beta$ negativo indica una mejora en la performance.
+
+Ejemplificada para un caso de cuatro niveles de entrenamiento, y tres sujetos, quedaria un sistema de la forma de la ecuacion \ref{ec:MatrixExpandida}.
 
 \begin{equation} \label{ec:MatrixExpandida}
     \bar {Y} = \bar{\delta} \cdot \bar{\bar{X}} \text{ con } \bar{\bar{X}} =
      \begin{pmatrix}
-        \beta & \alpha_1 & \alpha_2 & \alpha_3 & \gamma_{inicial} & \gamma_{final} \\
-        0 & 1 & 0 & 0 & 1 & 0\\
-        1 & 1 & 0 & 0 & 0 & 0\\
-        2 & 1 & 0 & 0 & 0 & 0\\
-        3 & 1 & 0 & 0 & 0 & 1\\
-        0 & 0 & 1 & 0 & 1 & 0\\
-        1 & 0 & 1 & 0 & 0 & 0\\
-        2 & 0 & 1 & 0 & 0 & 0\\
-        3 & 0 & 1 & 0 & 0 & 1\\
-        0 & 0 & 0 & 1 & 1 & 0\\
-        1 & 0 & 0 & 1 & 0 & 0\\
-        2 & 0 & 0 & 1 & 0 & 0\\
-        3 & 0 & 0 & 1 & 0 & 1\\
-     \end{pmatrix} \text{ y $\bar{\delta}$ el conjunto de parametros buscados}
+        %\beta & \alpha_1 & \alpha_2 & \alpha_3 & \gamma_{inicial} & \gamma_{final} \\
+        0 & 1\\
+        1 & 1\\
+        2 & 1\\
+        3 & 1\\
+        0 & 1\\
+        1 & 1\\
+        2 & 1\\
+        3 & 1\\
+        0 & 1\\
+        1 & 1\\
+        2 & 1\\
+        3 & 1\\
+     \end{pmatrix} \text{ y $\bar{\delta}$ el conjunto de parametros para ajustar}
  \end{equation}
 
-Analisando con este criterio todos los datos medidos (sin importar si entrenaron en angulos o en paralelismo o si entrenaron todas las sesiones o menos) obtenemos los resultados que se observan en la tabla \ref{tabla:entrenamientoGlobal} donde se pueden observar las siguientes conclusiones:
-
+Analizando con este criterio todos los datos medidos (sin importar si entrenaron en ángulos o en paralelismo o si entrenaron todas las sesiones o menos) obtenemos los resultados que se observan en la tabla \ref{tabla:entrenamientoGlobal}.
 
 \begin {table}
 
 \begin{center}
 
-\caption{OLS Regression Results para el conjunto de todas las mediciones}
+\caption{Ejemplo de resultados obtenidos: caso de la regresión OLS para el conjunto de todas las mediciones durante entrenamiento, excluyendo la sesion outlier (dia 1, sujeto1}
 \label{tabla:entrenamientoGlobal}
 
 \vspace{0.3in}
 
 \begin{tabular}{lclc}
-
 \toprule
-\textbf{Dep. Variable:}    &        y         & \textbf{  R-squared:         } &     0.545   \\
-\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.485   \\
-\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     9.068   \\
-\textbf{Date:}             & Mon, 31 Oct 2016 & \textbf{  Prob (F-statistic):} &  2.61e-07   \\
-\textbf{Time:}             &     15:34:05     & \textbf{  Log-Likelihood:    } &   -279.94   \\
-\textbf{No. Observations:} &          61      & \textbf{  AIC:               } &     575.9   \\
-\textbf{Df Residuals:}     &          53      & \textbf{  BIC:               } &     592.8   \\
-\textbf{Df Model:}         &           7      & \textbf{                     } &             \\
+\textbf{Dep. Variable:}    &        y         & \textbf{  R-squared:         } &     0.026   \\
+\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.005   \\
+\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     1.249   \\
+\textbf{Date:}             & Fri, 04 Nov 2016 & \textbf{  Prob (F-statistic):} &    0.270    \\
+\textbf{Time:}             &     15:28:40     & \textbf{  Log-Likelihood:    } &   -145.32   \\
+\textbf{No. Observations:} &          48      & \textbf{  AIC:               } &     294.6   \\
+\textbf{Df Residuals:}     &          46      & \textbf{  BIC:               } &     298.4   \\
+\textbf{Df Model:}         &           1      & \textbf{                     } &             \\
 \bottomrule
 \end{tabular}
 
 \begin{tabular}{lccccc}
-            & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$>|$t$|$} & \textbf{[95.0\% Conf. Int.]}  \\
+               & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$>|$t$|$} & \textbf{[95.0\% Conf. Int.]}  \\
 \midrule
-\textbf{$\beta$} &       2.6804  &        1.037     &     2.584  &         0.013        &         0.599     4.761       \\
-\textbf{$\alpha_1$} &     147.9547  &        9.683     &    15.281  &         0.000        &       128.534   167.375       \\
-\textbf{$\alpha_2$} &     135.2405  &        9.683     &    13.967  &         0.000        &       115.820   154.661       \\
-\textbf{$\alpha_3$} &     159.8119  &        9.683     &    16.505  &         0.000        &       140.391   179.233       \\
-\textbf{$\alpha_4$} &     121.9547  &        9.683     &    12.595  &         0.000        &       102.534   141.375       \\
-\textbf{$\alpha_5$} &     168.6959  &       12.158     &    13.876  &         0.000        &       144.311   193.081       \\
-\textbf{$\gamma_i$} &     -60.7316  &       13.418     &    -4.526  &         0.000        &       -87.644   -33.819       \\
-\textbf{$\gamma_f$} &     -30.5521  &       13.418     &    -2.277  &         0.027        &       -57.465    -3.640       \\
+cte &      17.6615  &        1.386     &    12.746  &         0.000        &        14.872    20.451       \\
+$\beta$    &      -0.2385  &        0.213     &    -1.117  &         0.270        &        -0.668     0.191       \\
 \bottomrule
 \end{tabular}
 
 \begin{tabular}{lclc}
-\textbf{Omnibus:}       & 19.666 & \textbf{  Durbin-Watson:     } &    1.279  \\
-\textbf{Prob(Omnibus):} &  0.000 & \textbf{  Jarque-Bera (JB):  } &   37.440  \\
-\textbf{Skew:}          & -1.013 & \textbf{  Prob(JB):          } & 7.41e-09  \\
-\textbf{Kurtosis:}      &  6.259 & \textbf{  Cond. No.          } &     41.9  \\
+\textbf{Omnibus:}       &  8.165 & \textbf{  Durbin-Watson:     } &    1.476  \\
+\textbf{Prob(Omnibus):} &  0.017 & \textbf{  Jarque-Bera (JB):  } &    8.482  \\
+\textbf{Skew:}          &  0.639 & \textbf{  Prob(JB):          } &   0.0144  \\
+\textbf{Kurtosis:}      &  4.616 & \textbf{  Cond. No.          } &     12.4  \\
 \bottomrule
 \end{tabular}
+
 \end{center}
 
 \end{table}
 
-De este ajuste se puede observa las siguientes conclusiones:
-
-\begin{itemize}
-    \item Todos los parametros dieron significativos ($p<0.05$) esto significa que hay un salto entre el nivel inicial y el entrenamiento, entre el del test final y el entrenamiento y ademas a lo largo del entrenamiento hubo una mejora, sin embargo los unicos dos parametros cuyo p valor dio numericamente distinto de cero fueron el $\beta$ y el $\gamma_f$. Esto significa que son los efectos menos marcados.
-    \item El parametro $\beta$ dio significativo pero muy chico. Es veinte veces menor que el $\gamma_i$, lo cual nos dice que la mejora promedio entre nivel y nivel (posterior al inicial) es veinte veces menor a la mejora tras el primer entrenamiento con feedback, esto indica una mejora cuantitativa mas que cualitativa al realizar entrenamiento, que probablemente tenga que ver con un cambio conceptual en el entendimiento de la tarea a realizar. Tambien indica que se debe tener cuidado en realizar controles acerca del entrenamiento durante el primer test aunque los test se realicen en diferentes categorias.
-    \item El parametro $\gamma_f$ dio aproximadamente la mitad que el $\gamma_i$. Si descontamos el efecto de entrenamiento, significa que la performance empeora al realizar una evaluacion sin feedback pero no tanto como para regresar al nievel inicial. Igual para comprobar esta ultima hipotesis tiene sentido hacer un test aparte. Se debe considerar el hecho de que el test final se realiza en un contexto diferente al entrenamiento y que no tiene feedback. 
-\end{itemize}
-
-Sin embargo, mirando los datos en bruto se observa que hay un sujeto que presenta una clara evolucion en su progreso durante el primer dia de entrenamiento, y dado el bajo numero de sujetos puede estar afectando toda la medida. Si repetimos el mismo ajuste pero tomando solo los datos de entrenamiento del segundo dia en adelante (lo cual tambien descarta al sujeto que entreno un solo dia), obtenemos los resultados que se observan en la tabla \ref{tabla:entrenamietoParteFinal} donde se puede ver que el valor de $\beta$ no es significativamente distinto de 0 (con mucho margen), por ende podemos decir que claramente no hay entrenamiento del segundo dia en adelante. De hecho, repitiendo el analisis inicial pero descartando al sujeto que muestra una mejora en la primer sesion, el p valor de $\beta$ da 0.119, es decir que sin considerar ese sujeto tampoco se ve un efecto de aprendizaje a lo largo del entrenamiento (salvo el contraste ya mencionado entre el umbral antes y despues del primer nivel con feedback). 
+Como se puede observar en la figura \ref{tabla:betas}, ajustando la pendiente para todos los datos se puede observar que la pendiente da negativa y significativa. Sin embargo observando los datos en bruto de la figura \ref{fig:DatosEntrenamiento}, se ve que hay un sujeto que presenta una mejora notoria durante el primer dia. Si excluimos del ajuste el entrenamiento de ese sujeto, ese dia, la pendiente disminuye notoriamente y el ajuste indica que deja de ser significativamente distinta a cero. Este resultado se repite eliminando el primer dia para todos los sujetos o al sujeto en cuestion. Sin embargo en esta medicion estan analizados en conjunto quienes entrenan angulos y quienes entrenan paralelismo. Separando los datos en funcion del entrenamiento que realizaron, se puede ver que se incluya o no esa sesion de entrenamiento cada categoria por separado no muestra una mejora significativa a lo largo del entrenamiento. 
 
 \begin {table}
 
 \begin{center}
 
-\caption{OLS Regression Results para el los dias 2, 3 y 4 de entrenamiento}
-\label{tabla:entrenamietoParteFinal}
-\vspace{0.3in}
-
-%\begin{tabular}{lclc}
-%\toprule
-%\textbf{Dep. Variable:}    &        y         & \textbf{  R-squared:         } &     0.356   \\
-%\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.273   \\
-%\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     4.292   \\
-%\textbf{Date:}             & Mon, 31 Oct 2016 & \textbf{  Prob (F-statistic):} &  0.00704    \\
-%\textbf{Time:}             &     17:12:46     & \textbf{  Log-Likelihood:    } &   -132.13   \\
-%\textbf{No. Observations:} &          36      & \textbf{  AIC:               } &     274.3   \\
-%\textbf{Df Residuals:}     &          31      & \textbf{  BIC:               } &     282.2   \\
-%\textbf{Df Model:}         &           4      & \textbf{                     } &             \\
-%\bottomrule
-%\end{tabular}
-
-\begin{tabular}{lccccc}
-            & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$>|$t$|$} & \textbf{[95.0\% Conf. Int.]}  \\
-\midrule
-\textbf{$\beta$} &       0.0625  &        0.661     &     0.095  &         0.925        &        -1.285     1.410       \\
-\textbf{$\alpha_1$} &     159.3056  &        4.317     &    36.902  &         0.000        &       150.501   168.110       \\
-\textbf{$\alpha_2$} &     157.8611  &        4.317     &    36.567  &         0.000        &       149.057   166.666       \\
-\textbf{$\alpha_3$} &     175.7500  &        4.317     &    40.711  &         0.000        &       166.945   184.555       \\
-\textbf{$\alpha_4$} &     162.5278  &        4.317     &    37.648  &         0.000        &       153.723   171.332       \\
-\bottomrule
-\end{tabular}
-
-%\begin{tabular}{lclc}
-%\textbf{Omnibus:}       &  2.518 & \textbf{  Durbin-Watson:     } &    1.645  \\
-%\textbf{Prob(Omnibus):} &  0.284 & \textbf{  Jarque-Bera (JB):  } &    1.526  \\
-%\textbf{Skew:}          &  0.003 & \textbf{  Prob(JB):          } &    0.466  \\
-%\textbf{Kurtosis:}      &  4.009 & \textbf{  Cond. No.          } &     17.7  \\
-%\bottomrule
-%\end{tabular}
-
-\end{center}
-
-\end{table}
-
-Sin embargo todo el analisis realizado habla de una evolucion intrasujeto, pero no discrimina entre las mediciones realizadas en paralelismo y las mediciones realizadas en angulos.
-
-\textbf{¿Son comparables las medidas en angulos y las medidas en paralelismo?}
-
-A priori no tendrian porque serlo. Son tests que miden habilidades diferentes, que si bien comparten el metodo de medicion utilizan escalas diferentes por medir dos caracteristicas intrisicamente diferentes. Ademas no esta claro a que se define como dificultad mas alla de observar una mejora o no en la variable medida al realizar el entrenamiento. Por lo tanto no tiene sentido comparar ambas medidas. Como prueba de ello, el la figura \ref{fig:equivalencia} se puede observar la comparacion del valor medio en todas las medidas tomadas con los sujetos entrenados (asumimos en base a lo discutido anteriormente que el entrenamiento satura en el primer nivel) en un categoria con los entrenados en la otra. Hacemos la comparacion utilizando un mannwhitneyu u test en la escala arbitraria en que se mide la performance y en la escala que corresponde al angulo absoluto. Se puede observar que no hay diferencias significativas en una escala y si en la otra (los p value fueron 0.012 y 0.218). El hecho de que el cambio de escalas afecte la significancia de comparar ambos conjuntos de medidas esta relacionado a que cada categoria tiene su propia factor de transformacion. 
-
-De esta figura se podria concluir que la dificultad para detectar las categorias mencionadas es similar al menos medida en terminos absolutos, pero lo cierto es que la propia escala absoluta es arbitraria, en tanto el angulo formado por los dos segmentos se puede medir como el angulo entre ellos o el angulo respecto a la mediatriz, solo por mencionar un ejemplo.
-
-\begin{figure}
-        \centering
-        \includegraphics[width=0.5\textwidth]{Imagenes/EquivalenciaDeEscalas.png}
-        \caption{Comparacion entre los niveles de umbral alcanzados por los sujetos entrenados en paralelismo y en angulos medido en terminos de la performance y del angulo formado en la figura.}
-        \label{fig:equivalencia}
-\end{figure}
-
-\textbf{¿Afecta el feedback o la repeticion de los niveles en una misma sesion a la performance?}
-
-El diseño del experimento se hizo para que cada sesion tuviera un nivel largo con feedback, uno corto sin feedback y uno final igual al inicial. Ademas, cada uno de los segundos y terceros niveles de cada sesion comienza en el nivel de dificultad que concluyo el anterior de manera de evitar efectos debido a diferentes procesos de convergencia del algoritmo dinamico que regula la dificultad. 
-
-El objetivo de este diseño era observar si se producia una reduccion de la performance al quitar el feedback y ademas observar si habia una mejora intra sesion producto del entrenamiento. Esta mejora podria encuadrarse en el marco de una mejora global inter sesion, pero como mostramos con anterioridad, este efecto no se oberva si descartamos la unica sesion donde un sujeto mostro una progresion marcada. Por esta razon al evaluar la mejora intra sesion se estaria evaluando si hay un efecto de "olvido" entre sesion y sesion que se revierta durante la misma. 
-
-Para analizar esta posible mejora, se considero cuatro criterios diferentes. Agrupar todos los valores de entrenamiento inicial, medio y final, sin importar la sesion de la que provienen. Agregar un factor fijo por usuario, agregar un factor fijo por dia, o agregar ambos factores. Este ultimo caso lo que hace es restar el valor medio de cada sesion al conjunto de datos. La ventaja de agregar factores fijos es que permite identificar posibles parametros que distingan efectos, pero aumenta el rango de error del conjunto de los parametros calculados. En cualquiera de los casos, dio que la pendiente de aprendizaje no es significativa. 
-
-
-
-
-\begin{table}
-
-\begin{center}
-
-\caption{OLS Regression: pendiente de aprendizaje intrasesion ajustada con diferentes criterios}
-\label{tabla:betasIntrasesion}
+\caption{Resultados obtenidos para los ajustes de la pendiente y el efecto feedback considerando diferentes conjuntos de datos. Se observa que el unico caso donde se encontro un efecto significativo es en la mejora global del entrenamiento unificando todos los datos correspondientes las categorias de entrenamiento diferente y en la mejora intrasesion para el caso de paralelismo. \newline
+* El usuario 1 presento un comportamiento marcadamente diferente durante el dia 1, por lo que se analizo los datos excluyendo estos datos \newline
+** Datos excluyendo dia 1 del sujeto 1}
+\label{tabla:betas}
 \vspace{0.3in}
 
 \begin{tabular}{lccccc}
-            Criterio & valor & \textbf{std err} & \textbf{t} & \textbf{P$>|$t$|$} & \textbf{[95.0\% Conf. Int.]}  \\
+            \textbf{Criterio utilizado} & \textbf{$\beta$} & $\alpha$ & \textbf{std err} & \textbf{t} & \textbf{P$>|$t$|$} \\%& \textbf{[95.0\% Conf. Int.]}\\
 \midrule
-$\beta$ Sin efecto fijo &       3.0625  &       1.965     &     1.559  &         0.126       &        -0.893     7.018       \\
-$\beta$ Efecto fijo por sujeto &  3.0625    &  1.704    &  1.797    &  0.079    &    -0.376     6.501\\
-$\beta$ Efecto fijo por dia &     3.0625    &  2.013    &  1.522    &  0.135    &    -0.997     7.122\\
-$\beta$ Efecto fijo por sesion &    3.0625  &    1.723  &    1.777  &    0.083  &      -0.422     6.547 \\
-$\beta$ Efecto fijo para segundo nivel & 3.0625 &     1.725 &     1.776 &     0.084     &   -0.429     6.554 \\
-Parametro del efecto fijo para segundo nivel & -2.8750    &  3.414 &     -0.842 &     0.404   &     -9.752     4.002 \\
+\midrule
+\textbf{Efecto del entrenamiento} &&&&&\\
+\midrule
+\textbf{Todos los datos medidos} & -0.8219 & &    0.346  &   -2.374  &    0.022     \\%&   -1.518    -0.126\\
+Excluyendo usuario 1* &-0.1361 & &     0.244  &   -0.558   &    0.580     \\%&   -0.631     0.358 \\
+Excluyendo dia 1 & -0.1292  & &   0.353 &    -0.365  &    0.717      \\%&  -0.848     0.589 \\
+Excluyendo dia 1 usuario 1* & -0.2385 & &    0.213  &   -1.117  &    0.270       \\%& -0.668     0.191 \\
+\textbf{Angulos (todos los datos)} & -1.1916 & &     0.646 &    -1.844 &     0.079     \\%&   -2.531     0.148\\
+\textbf{Angulos sin dia 1 sujeto 1}* & 0.3126  & &   0.225  &    1.389  &    0.181      \\%&  -0.158     0.784 \\
+\textbf{Paralelismo} & -0.5731    & &  0.322    & -1.779    &  0.087    \\%&    -1.237     0.090 \\
+\midrule
+\textbf{Efecto del entrenamiento en cada sesion} &&&&&\\
+\midrule
+\textbf{Angulos}** & 0.7143 & &    0.910     & 0.785     & 0.442      \\%&  -1.191     2.619\\
+\textbf{Paralelismo} & -3.4167 & &     1.324  &   -2.580  &    \textbf{0.016}      \\%&  -6.144    -0.689 \\
+\midrule
+\textbf{Efecto de la ausencia de feedback} &&&&&\\
+\midrule
+\textbf{Angulos}** & & 1.5714    &  1.577    &  0.997    &  0.332    \\%&    -1.741     4.884\\
+\textbf{Paralelismo}& & 1.0278   &   2.332   &   0.441   &   0.663   \\%&     -3.785     5.841\\
 \bottomrule
 \end{tabular}
 
 \end{center}
 
 \end{table}
+
+Otra pregunta que se penso a la hora de diseñar el experimento fue evaluar la evolucion de la performance para cada sujeto, dentro del entrenamiento que se realiza en cada dia (sesion). El orden diario de entrenamiento fue un nivel con feedback, uno sin feedback y otro final igual al inicial. Las hipotesis a testear era dos, primero observar si habia un efecto olvido entre sesion y sesion que hiciera que la pendiente de performance dentro de cada sesion fuese mayor a la global del proceso de aprendizaje. La segunda hipotesis era observar si la inclusion de un nivel sin feedback producia un empeoramiento en el umbral medido, es decir si en la mejora medida se podia distinguir de una mejora debida exclusivamente al feedback, pero que no estuviera relacionada al proceso acumulado de aprendizaje. 
+
+Para evaluar la primera de estas hipotesis se puede utilizar un modelo muy similar al de la ecuacion \ref{ec:RegresionEntrenamiento} pero haciendo que la variable t tome los valores 1, 2 y 3 y que el indice i represente no al usuario sino a cada sesion. El resultado obtenido se puede observar en la tabla \ref{tabla:betas} donde se ve que para el caso del entrenamiento en angulos no hay una pendiente significativa mientras que para el caso de paralelismo si. Como era de esperar la pendiente dio mucho mayor que la tendencia global, y esto se explica como un efecto serrucho donde entre sesion y sesion se pierde parte de la habilidad adquirida. 
+
+Para evaluar la segunda pregunta, en el caso del entrenamiento en angulos podriamos realizar un test estadistico tipo T (luego de un Anova) entre los entrenamientos con feedback y los sin, ya que no parece haber una acumulacion de efecto debido al entrenamiento, sin embargo para el paralelismo esta hipotesis no se cumple. Un test que aplica a ambos casos es realizar un ajuste muy similar al hecho pero sumando un factor fijo en todas las mediciones intermedias, es decir un parametro que indique cuanto se le debe sumar al valor medio de las mediciones sin feedback para que de el valor esperado este sobre la recta que ajusta todos los datos. El importante notar que debido a la simetria del problema (sets de tres datos equiespaciados) sumar una constante a los valores intermedios no afecta el calculo de la pendiente. El modelo a ajustar es una leve variacion del anterior donde la matriz utilizada es la que se observa en la ecuacion \ref{ec:MatrizIntermedio}
+
+\begin{equation} \label{ec:MatrizIntermedio}
+    \bar {Y} = \bar{\delta} \cdot \bar{\bar{X}} \text{ con } \bar{\bar{X}} =
+     \begin{pmatrix}
+        0 & 0 & 1\\
+        1 & 1 & 1\\
+        2 & 0 & 1\\
+        0 & 0 & 1\\
+        1 & 1 & 1\\
+        2 & 0 & 1\\
+        0 & 0 & 1\\
+        1 & 1 & 1\\
+        2 & 0 & 1\\
+        0 & 0 & 1\\
+        1 & 1 & 1\\
+        2 & 0 & 1\\
+     \end{pmatrix} \text{ y $\bar{\delta}$ el conjunto de parametros para ajustar}
+ \end{equation}
+ 
+\subsection{Aprendizaje y transferencia}
+
 
 \end{document}
