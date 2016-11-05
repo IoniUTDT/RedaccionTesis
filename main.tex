@@ -136,7 +136,7 @@ Analizando con este criterio todos los datos medidos (sin importar si entrenaron
 
 \begin{center}
 
-\caption{Ejemplo de resultados obtenidos: caso de la regresión OLS para el conjunto de todas las mediciones durante entrenamiento, excluyendo la sesion outlier (dia 1, sujeto1}
+\caption{Ejemplo de resultados obtenidos: caso de la regresión OLS para el conjunto de todas las mediciones durante entrenamiento, excluyendo la sesion outlier (dia 1, sujeto1)}
 \label{tabla:entrenamientoGlobal}
 
 \vspace{0.3in}
@@ -176,7 +176,7 @@ $\beta$    &      -0.2385  &        0.213     &    -1.117  &         0.270      
 
 Como se puede observar en la figura \ref{tabla:betas}, ajustando la pendiente para todos los datos se puede observar que la pendiente da negativa y significativa. Sin embargo observando los datos en bruto de la figura \ref{fig:DatosEntrenamiento}, se ve que hay un sujeto que presenta una mejora notoria durante el primer dia. Si excluimos del ajuste el entrenamiento de ese sujeto, ese dia, la pendiente disminuye notoriamente y el ajuste indica que deja de ser significativamente distinta a cero. Este resultado se repite eliminando el primer dia para todos los sujetos o al sujeto en cuestion. Sin embargo en esta medicion estan analizados en conjunto quienes entrenan angulos y quienes entrenan paralelismo. Separando los datos en funcion del entrenamiento que realizaron, se puede ver que se incluya o no esa sesion de entrenamiento cada categoria por separado no muestra una mejora significativa a lo largo del entrenamiento. 
 
-\begin {table}
+\begin{table}
 
 \begin{center}
 
@@ -209,6 +209,16 @@ Excluyendo dia 1 usuario 1* & -0.2385 & &    0.213  &   -1.117  &    0.270      
 \midrule
 \textbf{Angulos}** & & 1.5714    &  1.577    &  0.997    &  0.332    \\%&    -1.741     4.884\\
 \textbf{Paralelismo}& & 1.0278   &   2.332   &   0.441   &   0.663   \\%&     -3.785     5.841\\
+\midrule
+\textbf{Efecto de los tests iniciales y finales} &&&&\\
+\midrule
+\textbf{Paralelismo $alpha_i$} & & 9.3021    &  4.210   &   2.209   &   \textbf{0.035}  \\%&   0.691 &    17.914  \\
+\textbf{Paralelismo $alpha_f$} & & 5.4191    &   4.375  &    1.239  &    0.225 \\%&    -3.530    14.368 \\
+\textbf{Paralelismo $alpha_{cte}$} & & 20.0312  &    2.303  &    8.698  &    0.000  \\%&       15.321    24.741 \\
+\midrule
+\textbf{Angulos** $\alpha_i$} & & 64.9951   &   3.235  &   20.092  & \textbf{0.000} \\%&       58.268    71.722\\
+\textbf{Angulos** $\alpha_f$} & & 8.9307    &   3.070  &    2.909  &    \textbf{0.008}   \\%&      2.546    15.316 \\
+\textbf{Angulos** $\alpha_{cte}$} & & 13.8049   &   1.950  &    7.079  &    0.000  \\%&        9.750    17.860 \\
 \bottomrule
 \end{tabular}
 
@@ -220,7 +230,7 @@ Otra pregunta que se penso a la hora de diseñar el experimento fue evaluar la e
 
 Para evaluar la primera de estas hipotesis se puede utilizar un modelo muy similar al de la ecuacion \ref{ec:RegresionEntrenamiento} pero haciendo que la variable t tome los valores 1, 2 y 3 y que el indice i represente no al usuario sino a cada sesion. El resultado obtenido se puede observar en la tabla \ref{tabla:betas} donde se ve que para el caso del entrenamiento en angulos no hay una pendiente significativa mientras que para el caso de paralelismo si. Como era de esperar la pendiente dio mucho mayor que la tendencia global, y esto se explica como un efecto serrucho donde entre sesion y sesion se pierde parte de la habilidad adquirida. 
 
-Para evaluar la segunda pregunta, en el caso del entrenamiento en angulos podriamos realizar un test estadistico tipo T (luego de un Anova) entre los entrenamientos con feedback y los sin, ya que no parece haber una acumulacion de efecto debido al entrenamiento, sin embargo para el paralelismo esta hipotesis no se cumple. Un test que aplica a ambos casos es realizar un ajuste muy similar al hecho pero sumando un factor fijo en todas las mediciones intermedias, es decir un parametro que indique cuanto se le debe sumar al valor medio de las mediciones sin feedback para que de el valor esperado este sobre la recta que ajusta todos los datos. El importante notar que debido a la simetria del problema (sets de tres datos equiespaciados) sumar una constante a los valores intermedios no afecta el calculo de la pendiente. El modelo a ajustar es una leve variacion del anterior donde la matriz utilizada es la que se observa en la ecuacion \ref{ec:MatrizIntermedio}
+Para evaluar la segunda pregunta, en el caso del entrenamiento en angulos podriamos realizar un test estadistico tipo T (luego de un Anova) entre los entrenamientos con feedback y los sin, ya que no parece haber una acumulacion de efecto debido al entrenamiento, sin embargo para el paralelismo esta hipotesis no se cumple. Un test que aplica a ambos casos es realizar un ajuste muy similar al hecho pero sumando un factor fijo en todas las mediciones intermedias, es decir un parametro que indique cuanto se le debe sumar al valor medio de las mediciones sin feedback para que de el valor esperado este sobre la recta que ajusta todos los datos. El importante notar que debido a la simetria del problema (sets de tres datos equiespaciados) sumar una constante a los valores intermedios no afecta el calculo de la pendiente. El modelo a ajustar es una leve variacion del anterior donde la matriz utilizada es la que se observa en la ecuacion \ref{ec:MatrizIntermedio} adecuada al numero de sujetos y de datos.
 
 \begin{equation} \label{ec:MatrizIntermedio}
     \bar {Y} = \bar{\delta} \cdot \bar{\bar{X}} \text{ con } \bar{\bar{X}} =
@@ -240,7 +250,79 @@ Para evaluar la segunda pregunta, en el caso del entrenamiento en angulos podria
      \end{pmatrix} \text{ y $\bar{\delta}$ el conjunto de parametros para ajustar}
  \end{equation}
  
+De manera similar, podemos estudiar si los valores de los tests iniciales y finales (para la orientacion que se entreno) se corresponden con el valor esperado como continuacion o antecedente del entrenamiento. Para ellos incluimos estos dos valores en la serie de datos y volvemos a ajustar con un modelo de regresion lineal que incluya una evolucion temporal para toda la serie, pero que incluya (a diferencia del analisis previo) dos factores fijos, uno para el test inicial y otro para el test final. Estos parametros permiten que el ajuste agregue un offset a las mediciones iniciales y finales para tratar de alinearlos en el proceso de entrenamiento. El valor y la significancia de dichos parametros indican si se puede considerar a los tests iniciales y finales como un elemento mas del entrenamiento o no. En la tabla \ref{tabla:betas} se puede observar que hay un salto cualitativo entre los tests y el primer resultado luego de dar feedback, que en ambos casos es significativo. Dado que el ajuste fue hecho con el 0 de la variable "temporal" en el primer elemento, el valor de los $alpha_i$ coincide con la diferencia entre el valor de umbral medido en los test y el esperado asumiendo que correspondieran a una primer instancia de entrenamiento. 
+
+El hecho de que se de esta diferencia (en el caso de los angulos, la tarea mas dificil, muy marcada) se puede explicar en que el test inicial no tiene feedback, mientras que el primer nivel de entrenamiento si, y por lo tanto se este dando un efecto muy marcado de comprension de la tarea en el simple hecho de tener un nivel con feedback, independientemente del posterior entrenamiento. En el caso de los angulos se observar que el test final da significativamente peor que lo esperado (mientras que en paralelismo esto no se llega a observar), sin embargo la perdidad de capacidad observada es mucho menor (casi un orden de magnitud) que el cambio inicial. Algo que puede explicar esta diferencia entre paralelismo y angulos, es por un lado la mayor facilidad que se observa en general en la tarea de reconocer paralelismo incluso en el test inicial (ver figura \ref{}) por un lado, pero por otro que en las sesiones de test, el de paralelismo a 30º es el primero que se realiza, por ende la sesion comienza igual que las de entrenamiento, mientras que el nivel de test correspondiente a los 30º es el primero de la serie de los de angulos, que se realiza despues de los de paralelismo, por ende dicho nivel se realiza en un contexto diferente al del entrenamiento. 
+
 \subsection{Aprendizaje y transferencia}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Imagenes/TransferenciaTestInicialHistogramasTotales.png}
+    \caption{Histograma de umbral de deteccion segun categoria y orientacion. Se observa que para el caso de paralelismo los sujetos muestran cierta habilidad de distinguir rectas paralelas de rectas que no lo son, mientras que para angulos la mayoria de las mediciones dan muy cercanas a 80º que es la saturacion de la medicion.}
+    \label{fig:histogramasTestInicial}
+\end{figure}
+
+Los tests iniciales y finales sobre los que queremos observar efectos del entrenamiento fueron realizados en ocho orientaciones, con la idea de poder observar efectos de transferencia ademas de efectos de entrenamiento. Por ende los primero que tiene sentido cuantificar es si hay una diferencia significativa de los usuarios previa a cualquier entrenamiento segun la orientacion del test realizado. Como se puede observar en los histogramas de la figura \ref{fig:histogramasTestInicial} la capacidad inicial de los sujetos de distinguir (o interpretar) los estimulos sonoros que escuchan difiere mucho segun se trate de angulos o de paralelismo. Si bien se mide cualidades geometricas diferentes que no necesariamente son estrictamente comparables, se observa una notoria diferencia en la distribucion en el caso de los angulos y del paralelismo como efecto global. Considerando que la escala satura en 80 para el caso de los angulos, y en 110 para la de paralelismo, se puede decir que mientras que la mayoria de los sujetos puede realizar la tarea de distinguir rectas paralelas de no paralelas inicialmente, la mayoria de los sujetos no puede distinguir si un angulo es recto o no, incluso cuando los angulos no rectos sean marcadamente no rectos. Este fecto se puede observar al realizar la comparacion estadistica de ambos conjunto en la tabla \ref{tabla:significativos}.
+
+Tambien en dicha tabla se puede comprobar que en el caso de los angulos no parece haber una orientacion que muestre una dificultad mayor o menor que las otras, mientras que en el caso de paralelismo si. La orientacion P60 resulta mas facil que las demas. Un efecto que se esperaba observar (mas considerando los efectos observados en el entrenamiento) es que se produciera algun tipo de entrenamiento durante el test inicial. Sin embargo el hecho de que al realizar un ANOVA en los test iniciales no se observe una diferencia significativa en los datos separando por orientacion excepto en el caso P60 contradice dicha hipotesis. Otra hipotesis relacionada con la experiencia recopilada en las pruebas preliminares y con el hecho de la fuerte variancia que tiene el metodo de representacion frente a rotaciones, era que hubiera una diferencia significativa entre las geometrias mas verticales (P60 y P120) y las mas horizontales (P30 y P150). Si realizamos un ttest entre ambos grupos efectivamente da significativa la diferencia, pero esta hipotesis asume una simetria respecto a la vertical que no se observa en los datos, ya que realizando una ANOVA entre P30, P120 y P150 no se observan efectos significativos entre ninguna de dichas orientaciones. Mas alla de considerar el reducido numero de muestras (n = 10) como principal responsable de este efecto, una posible explicacion alternativa del efecto puede darse en el hecho de que el cambio del sentido de la pendiente al pasar de P60 a P120 desoriente a los sujetos y contrareste un efecto de mejora en las geometrias mas verticales. 
+
+Dado que el principal objetivo es comparar el aprendizaje de los sujetos entrenados contra los que no lo estan, lo primero que deberiamos revisar es que el subgrupo de sujetos a los que se entreno presenten niveles de umbral similares a los que no se entreno, para validar un punto de partida equivalente en el efecto control. Observando la tabla \ref{tabla:significativos} se ve que esta condicion se cumple. 
+
+Sabiendo que los conjuntos de sujetos parten de una base comun queremos observar si se dan diferentes efectos. El primero es si la performance en la cada categoria cambia y si lo hace en funcion del entrenamiento o no. Para eso realizamos tres anovas, una para los angulos, otra para paralelismo en orientacion diferente a P60 y otra para paralelismo en P60. Sin embargo al realizar la Anova en el caso en que esperamos un resultado mas marcado (en la orientacion entrenada) resulta que da no significativa. Esto sucede con el entrenamiento en angulos y en paralelismo.
+
+\begin{table}
+\begin{center}
+
+\caption{Estudios estadisticos realizados para comparar mediciones en busca de efectos de dificultad, aprendizaje o transferencia.}
+\label{tabla:significativos}
+
+\vspace{0.3in}
+
+\begin{tabular}{lcccc}
+\textbf{Comparacion realizada} & estadistico & p-value & significativo & comentario\\
+\midrule
+\midrule
+\multicolumn{5}{c}{ \textbf{Comparaciones generales de las orientaciones usando el test inicial}} \\
+\midrule
+ttest angulos vs paralelismo & -6.74 & 0.000 & SI \\
+anova angulos vs orientacion & 5.999 & 0.00201 & SI & Detecta una diferencia en P60 \\
+anova angulos sin P60 vs orientacion  & 1.504 &  0.240 & NO \\
+anova paralelismo vs orientacion & 2.087 & 0.119 & NO\\
+\midrule
+\multicolumn{5}{c}{ \textbf{Comparaciones entre sujetos entrenados y no entrenados previo entrenamiento}} \\
+\midrule
+ttest P60 vs P60 & 0.190 & 0.853 & NO & Son equivalentes\\
+anova angulos sin P60 vs orientación & 2.189 & 0.0891 & NO & Son equivalentes\\
+anova paralelismo vs orientación & 2.194 & 0.0615 & NO & Son equivalentes\\
+\midrule
+\multicolumn{5}{c}{ \textbf{Analisis del efecto del entrenamiento en P30}} \\
+\midrule
+\midrule
+\multicolumn{5}{c}{Comparación en la performance en la orientación P30} \\
+\midrule
+anova entre control, angulos y paralelismo & 2.244 & 0.176 & NO & El entrenamiento no hace efecto \\
+
+\midrule
+\multicolumn{5}{c}{ \textbf{Analisis del efecto del entrenamiento en A30}} \\
+\midrule
+\midrule
+\multicolumn{5}{c}{Comparación en la performance en la orientación A30} \\
+\midrule
+anova entre control, angulos y paralelismo & 2.81 & 0.126 & NO & El entrenamiento no hace efecto \\
+
+
+\midrule
+\multicolumn{5}{c}{ \textbf{Analisis del efecto del control}} \\
+\midrule
+ttest en paralelismo antes vs despues 
+
+\bottomrule
+\end{tabular}
+
+\end{center}
+\end{table}
+
 
 
 \end{document}
