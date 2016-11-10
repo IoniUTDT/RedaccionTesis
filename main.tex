@@ -200,7 +200,7 @@ Excluyendo dia 1 usuario 1* & -0.2385 & &    0.213  &   -1.117  &    0.270      
 \textbf{Angulos sin dia 1 sujeto 1}* & 0.3126  & &   0.225  &    1.389  &    0.181      \\%&  -0.158     0.784 \\
 \textbf{Paralelismo} & -0.5731    & &  0.322    & -1.779    &  0.087    \\%&    -1.237     0.090 \\
 \midrule
-\textbf{Efecto del entrenamiento en cada sesion} &&&&&\\
+\textbf{Efecto del entrenamiento dentro de cada sesion} &&&&&\\
 \midrule
 \textbf{Angulos}** & 0.7143 & &    0.910     & 0.785     & 0.442      \\%&  -1.191     2.619\\
 \textbf{Paralelismo} & -3.4167 & &     1.324  &   -2.580  &    \textbf{0.016}      \\%&  -6.144    -0.689 \\
@@ -215,10 +215,11 @@ Excluyendo dia 1 usuario 1* & -0.2385 & &    0.213  &   -1.117  &    0.270      
 \textbf{Paralelismo $alpha_i$} & & 9.3021    &  4.210   &   2.209   &   \textbf{0.035}  \\%&   0.691 &    17.914  \\
 \textbf{Paralelismo $alpha_f$} & & 5.4191    &   4.375  &    1.239  &    0.225 \\%&    -3.530    14.368 \\
 \textbf{Paralelismo $alpha_{cte}$} & & 20.0312  &    2.303  &    8.698  &    0.000  \\%&       15.321    24.741 \\
-\midrule
 \textbf{Angulos** $\alpha_i$} & & 64.9951   &   3.235  &   20.092  & \textbf{0.000} \\%&       58.268    71.722\\
 \textbf{Angulos** $\alpha_f$} & & 8.9307    &   3.070  &    2.909  &    \textbf{0.008}   \\%&      2.546    15.316 \\
 \textbf{Angulos** $\alpha_{cte}$} & & 13.8049   &   1.950  &    7.079  &    0.000  \\%&        9.750    17.860 \\
+
+
 \bottomrule
 \end{tabular}
 
@@ -258,9 +259,30 @@ El hecho de que se de esta diferencia (en el caso de los angulos, la tarea mas d
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{Imagenes/TransferenciaTestInicialHistogramasTotales.png}
+    \includegraphics[width=0.8\textwidth]{Imagenes/TransferenciaTestInicialHistogramasTotales.png}
     \caption{Histograma de umbral de deteccion segun categoria y orientacion. Se observa que para el caso de paralelismo los sujetos muestran cierta habilidad de distinguir rectas paralelas de rectas que no lo son, mientras que para angulos la mayoria de las mediciones dan muy cercanas a 80º que es la saturacion de la medicion.}
     \label{fig:histogramasTestInicial}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/TransferenciaHistogramasAngulosAntesVsDespues.png}
+    \caption{Comparacion en el umbral de la capacidad de deteccion para los sujetos que entrenaron en angulos (orientacion 30º) en los test inicial y final. Se agruparon todas las mediciones debido al bajo numero de sujetos.}
+    \label{fig:histogramasAntesVsDespuesAngulos}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/TransferenciaHistogramasParalelismoAntesVsDespues.png}
+    \caption{Comparacion en el umbral de la capacidad de deteccion para los sujetos que entrenaron en paralelismo (orientacion 30º) en los test inicial y final. Se agruparon todas las mediciones debido al bajo numero de sujetos.}
+    \label{fig:histogramasAntesVsDespuesParalelismo}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/TransferenciaHistogramasControlAntesVsDespues.png}
+    \caption{Comparacion en el umbral de la capacidad de deteccion para los sujetos que no entrenaron (grupo control) en los test inicial y final. Se agruparon todas las mediciones debido al bajo numero de sujetos.}
+    \label{fig:histogramasAntesVsDespuesControl}
 \end{figure}
 
 Los tests iniciales y finales sobre los que queremos observar efectos del entrenamiento fueron realizados en ocho orientaciones, con la idea de poder observar efectos de transferencia ademas de efectos de entrenamiento. Por ende los primero que tiene sentido cuantificar es si hay una diferencia significativa de los usuarios previa a cualquier entrenamiento segun la orientacion del test realizado. Como se puede observar en los histogramas de la figura \ref{fig:histogramasTestInicial} la capacidad inicial de los sujetos de distinguir (o interpretar) los estimulos sonoros que escuchan difiere mucho segun se trate de angulos o de paralelismo. Si bien se mide cualidades geometricas diferentes que no necesariamente son estrictamente comparables, se observa una notoria diferencia en la distribucion en el caso de los angulos y del paralelismo como efecto global. Considerando que la escala satura en 80 para el caso de los angulos, y en 110 para la de paralelismo, se puede decir que mientras que la mayoria de los sujetos puede realizar la tarea de distinguir rectas paralelas de no paralelas inicialmente, la mayoria de los sujetos no puede distinguir si un angulo es recto o no, incluso cuando los angulos no rectos sean marcadamente no rectos. Este fecto se puede observar al realizar la comparacion estadistica de ambos conjunto en la tabla \ref{tabla:significativos}.
@@ -269,7 +291,7 @@ Tambien en dicha tabla se puede comprobar que en el caso de los angulos no parec
 
 Dado que el principal objetivo es comparar el aprendizaje de los sujetos entrenados contra los que no lo estan, lo primero que deberiamos revisar es que el subgrupo de sujetos a los que se entreno presenten niveles de umbral similares a los que no se entreno, para validar un punto de partida equivalente en el efecto control. Observando la tabla \ref{tabla:significativos} se ve que esta condicion se cumple. 
 
-Sabiendo que los conjuntos de sujetos parten de una base comun queremos observar si se dan diferentes efectos. El primero es si la performance en la cada categoria cambia y si lo hace en funcion del entrenamiento o no. Para eso realizamos tres anovas, una para los angulos, otra para paralelismo en orientacion diferente a P60 y otra para paralelismo en P60. Sin embargo al realizar la Anova en el caso en que esperamos un resultado mas marcado (en la orientacion entrenada) resulta que da no significativa. Esto sucede con el entrenamiento en angulos y en paralelismo.
+Sabiendo que los conjuntos de sujetos parten de una base comun queremos observar si se dan diferentes efectos. El primero es si la performance en la cada categoria cambia y si lo hace en funcion del entrenamiento o no. Para eso realizamos dos anovas, una en cada categoria entrenada, comparando los sujetos entrenados, los sujetos entrenados en la otra categoria y los sujetos control. En todos los casos dio no significativa la comparación. Esto muy probablemente se deba al extrenadamente bajo numero de sujetos, porque como se puede observar en las figuras \ref{fig:histogramasAntesVsDespuesAngulos}, \ref{fig:histogramasAntesVsDespuesParalelismo}, \ref{fig:histogramasAntesVsDespuesControl} parece haber un efecto diferenciado segun que hayan los sujetos hayan entrenado o no, pero es cierto que no parece distinguible la mejor segun que categoria entrenaron. Solo quitando a un sujeto que entreno menos de lo previsto y que ademas hizo el test final habiendo pasado mucho mas tiempo que en los otros casos, se puede encontrar un resultado estidisticamente valido en el entrenamiento de paralelismo, donde se observa una mejora de la categoria entrenada comparando contra los grupos que no entrenaron. 
 
 \begin{table}
 \begin{center}
@@ -290,18 +312,26 @@ anova angulos vs orientacion & 5.999 & 0.00201 & SI & Detecta una diferencia en 
 anova angulos sin P60 vs orientacion  & 1.504 &  0.240 & NO \\
 anova paralelismo vs orientacion & 2.087 & 0.119 & NO\\
 \midrule
-\multicolumn{5}{c}{ \textbf{Comparaciones entre sujetos entrenados y no entrenados previo entrenamiento}} \\
+\multicolumn{5}{c}{ \textbf{Comparaciones entre sujetos entrenados y no entrenados previo al entrenamiento}} \\
 \midrule
-ttest P60 vs P60 & 0.190 & 0.853 & NO & Son equivalentes\\
-anova angulos sin P60 vs orientación & 2.189 & 0.0891 & NO & Son equivalentes\\
-anova paralelismo vs orientación & 2.194 & 0.0615 & NO & Son equivalentes\\
+anova paralelismo vs control vs angulos & 2.389 & 0.098 & NO & Son equivalentes\\
 \midrule
 \multicolumn{5}{c}{ \textbf{Analisis del efecto del entrenamiento en P30}} \\
 \midrule
+
 \midrule
-\multicolumn{5}{c}{Comparación en la performance en la orientación P30} \\
+\multicolumn{5}{c}{Comparación en la performance en la orientación P30 post entrenamiento} \\
 \midrule
-anova entre control, angulos y paralelismo & 2.244 & 0.176 & NO & El entrenamiento no hace efecto \\
+anova: control, angulos y paralelismo & 2.244 & 0.176 & NO & El entrenamiento no hace efecto \\
+anova: control, angulos y paralelismo*** & 9.464 & 0.013 & SI & Excluyendo al sujeto 4***. \\
+ttest: paralelismo*** y control & -3.979 & 0.010 & SI & \\
+ttest: angulos y control & -0.457 & 0.666 & NO & \\
+ttest: angulos y paralelismo*** & 7.484 & 0.017 & SI & \\
+
+\midrule
+\multicolumn{5}{c}{Comparación en la performance en otras orientaciones de paralelismo post entrenamiento} \\
+\midrule
+anova: control, angulos y paralelismo*** & 1.150 & 0.333 & NO & No parece haber transferencia\\
 
 \midrule
 \multicolumn{5}{c}{ \textbf{Analisis del efecto del entrenamiento en A30}} \\
@@ -309,13 +339,13 @@ anova entre control, angulos y paralelismo & 2.244 & 0.176 & NO & El entrenamien
 \midrule
 \multicolumn{5}{c}{Comparación en la performance en la orientación A30} \\
 \midrule
-anova entre control, angulos y paralelismo & 2.81 & 0.126 & NO & El entrenamiento no hace efecto \\
-
+anova: control, angulos y paralelismo & 2.81 & 0.126 & NO & No parece haber efecto \\
 
 \midrule
 \multicolumn{5}{c}{ \textbf{Analisis del efecto del control}} \\
 \midrule
-ttest en paralelismo antes vs despues 
+ttest pareado inicial vs final & 2.512 & 0.016 & SI & Se observa mejora en el control\\
+ttest sin parear inicial vs final & 1.913 & 0.059 & NO & solo al parear las mediciones. \\
 
 \bottomrule
 \end{tabular}
