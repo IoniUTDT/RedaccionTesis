@@ -5,8 +5,10 @@
 \usepackage{fullpage}
 \usepackage{hyperref}
 \usepackage{graphicx}
-
-
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{sidecap}
+\usepackage{listings}             % Include the listings-package
 
 \title{Informe de tesis de licenciatura}
 \author{Ionatan Perez}
@@ -14,7 +16,15 @@
 
 \begin{document}
 
+
+\lstset{language=Pascal}          % Set your language (you can change the language for each code-block optionally)
+
 \maketitle
+
+\clearpage 
+
+\tableofcontents  %lo ponemos para trabajo largos que necesiten indice
+\clearpage
 
 \section{Introducción}
 
@@ -96,11 +106,123 @@
     
     Como parte de los cambios realizados en el protocolo, mejoramos el mecanismo de medición del umbral respecto al experimento anterior (cambiando la lógica de generación de estímulos, y el algoritmo dinámico para ajustar la dificultad porque el largo de los experimentos resultaba un limitante), elegimos un conjunto de configuraciones o niveles con un alto grado de simetría con el objetivo de distinguir si la posible transferencia dependía de algunos de estos invariantes, y seleccionamos las configuraciones donde los sujetos mostraban peor performance inicial con el objetivo de tener un mayor rango donde medir los efectos de la mejora. Como se puede observar en los resultados detallados más adelante los resultados de este experimento no dieron todo lo bien que esperábamos. La principal razón por la cual no pudimos observar resultados acordes a lo buscado la atribuimos al bajo numero de sujetos que conseguimos que participaran del experimento, lo cual invalida cualquier medición estadísticamente sólida y al hecho de que el proceso de entrenamiento parece ser mas bien de carácter cualitativo y no cualitativo, es decir que cuando los sujetos entienden lo que tienen que hacer presentan una mejora, pero que dicha mejora luego no se repite en el tiempo al menos en los tiempos y longitudes de entrenamiento realizado. 
     
-\subsection{La creación de los estímulos}
+\subsection{El proceso de creación de estímulos}
     
-    Desde un principio el objetivo fue testear la capacidad de los usuarios de distinguir categorías y aspectos geométricos de los estímulos por lo tanto pensamos en diferenciar si un ángulo era recto o no recto, si dos segmentos eran paralelos o no y si un cuadrilátero era cuadrado o no cuadrado. Pensando en esta última categoría como una combinación de las dos anteriores que reflejaría en algun punto efectos de transferencia. 
+    Desarrollar el proceso de creación de estímulos implicó dos desafíos, por un lado disponer de alguna lógica, paramétrica de creación de figuras geométricas que sirvieran para testear nuestras hipótesis y por otro el de transformar los estímulos creados en términos visuales o geométricos a su representación sonora. Mientras que el primer aspecto requirió una constante adaptación y sofisticación en función de los cambios experimentales, el segundo fue resuelto al inicio de trabajo y la solución, con leves cambios sirvió para todas las pruebas y experimentos realizados. 
     
+    La lógica del vOICe para transformar imágenes en sonidos es muy sencilla y genérica, de ahí su potencialidad para representar cualquier tipo de figura. Para la transformación lo que hace es partir la imagen una una cuadricula de NxM donde cada elemento se corresponde con un pixel en la imagen y a partir de esta matriz se genera el sonido a reproducir. Para ello, se considera el índice vertical (lo llamaremos i) de la matriz como el índice que recorre en frecuencias que frecuencia se debe reproducir y el índice horizontal (llamado j) indica en que tiempo de debe reproducir dicho elemento. En términos matemáticos es hacer una antitransformada de fourier usando cada columna como el espectro que corresponde a tiempos sucesivos. Esta operación (para sucesivas imágenes identificadas con el índice k) se puede calcular como el resultado de la ecuación \ref{ec:VoiceOriginal} donde T representa el tiempo total que dura cada imagen. Este algoritmo se puede interpretar visualmente en la figura \ref{fig:VoiceOriginal}
+    
+    \begin{figure}
+        \center
+        \includegraphics[width=0.5\textwidth]{Imagenes/VoiceOriginal.png}
+        \caption{Ejemplo de representación sonora para el dispositivo original del vOICe \cite{Voice1} correspondiente a la ecuación \ref{ec:VoiceOriginal}.}
+        \label{fig:VoiceOriginal}
+    \end{figure}
+    
+    \begin{equation}
+        \label{ec:VoiceOriginal}
+        s(t) = \sum_{i,j,k}^{M,N,K} p_{i,j}^k \cdot sin(w_i \cdot t + \phi^k) \cdot \int_{k \cdot T}^{(k+1) \cdot T} \delta_x dx \cdot \int_{k \cdot T+j \cdot T/N}^{k \cdot T + (j+1) \cdot T/N} \delta_x dx
+    \end{equation}
 
+    Con este procesamiento en mente construimos un primer algoritmo que realizara dicha transformación y probamos escuchar como resultaba la representación sonora para imágenes de prueba realizadas con cualquier editor de gráficos en formato no vectorial. Nos encontramos con problemas inmediatos. Lo primero observado fue que si bien el sistema de transformación a priori no posee una limitación de resolución obvia, cuando la resolución es alta aparecen problemas inherentes a los saltos en la discretización de la imagen. La discretización en la coordenada horizontal hace que en realidad lo que parece un espectro puro para un pixel dado adquiera armónicos producto de que el pixel comienza y termina en un lapso corto de tiempo. Por lo tanto cuanto mayor sea la resolución mas seguido aparecen saltos de intensidad que se corresponden con la inclusión de chasquidos en el sonidos que distorsionan el sonido deseado. 
+    
+    Por otro lado la discretización vertical de la imagen hace que al utilizar resoluciones altas se creen secuencias de sonido de frecuencia muy similar que generan efectos de batido. Nuevamente, al incrementar la resolución utilizada estos problemas escalan rápidamente. 
+    
+    Estos dos problemas, que en un sistema de representación de imágenes complejas pueden pasar más desapercibidos o generar menos alteraciones, en nuestro caso representaban un impedimento fundamental para utilizar el algoritmo original de vOICe, porque no solo nos impedirían utilizar una representación de alta resolución sino que también incluirían en el sistema de representación un elemento indeseado que presenta una muy fuerte ruptura de simetría. Como nuestro objetivo estaba centrado precisamente en determinar la sensibilidad de los sujetos a aspectos geométricos y desconocíamos el rango de sensibilidad que esperábamos medir, basar todos los experimentos en una representación que a priori presenta una limitación tan evidente no tenia sentido. 
+    
+    Tuvimos por lo tanto que reformular el algoritmo de transformación de imágenes a sonido de manera de evitar estos inconvenientes. Necesitábamos un algoritmo que respetara la representación donde a mayor altura mayor frecuencia, pero que no tuviera los problemas inherente a la discretización en pixeles de las imágenes usuales. En otras palabras necesitábamos un sistema que preservara la información conceptual de los segmentos con los que queríamos construir geometría sin pasar por la instancia de representación en formato pixelado, y un algoritmo para transformar dicha información tanto a una imagen visual como a una representación sonora. Esto representaba dos nuevos desafíos, por un lado generar u manipular imágenes en formato vectorial (que es un formato donde se guarda la información independientemente de su representación) y por otro poder transformar esta información vectorial en los sonidos correspondientes. 
+    
+    Para la primera de las dos tareas decidimos crear y utilizar imágenes en formato SVG. El formato SVG es un estándar de representación (\url{https://www.w3.org/TR/SVG/}) para construir imágenes a partir de información vectorial con alto nivel de difusión y fácil codificación. Tiene la ventaja de que la mayoría de los navegadores y sistemas operativos modernos incluyen renderizadores capaces de mostrar como imagen este tipo de archivos, de que (al igual que los demás formatos vectoriales) permite almacenar información de una imagen arbitrariamente grande y compleja en pocas lineas de texto, de ser un estándar para el cual existen librerías en la mayoría de los lenguajes de programación capaces de manipularlo, y de ser un formato fácilmente legible incluso por humanos mirando el código fuente. En nuestro caso un factor importante a la hora de utilizar este formato fue que la elección era compatible con generar posteriores procedimientos experimentales que pudieran ser validados en contextos y dispositivos diferentes, pero conservando la información fundamental y conceptual de los estímulos utilizados. Un ejemplo de como se genera y visualiza la información en este formato puede verse en la figura \ref{fig:SVGtoPNG} donde muestra la representación para una de las figuras utilizadas en las pruebas preliminares. 
+    
+    El código para generar estos archivos fue variando según la etapa de desarrollo experimental de cada experimento de manera de ser cada vez más paramétrico y automatizado. El detalle de los parámetros utilizados en los últimos experimentos se comenta mas adelante, pero para las pruebas preliminares se generaron largas secuencias de figuras incluidas en las categorías de cuadriláteros, paralelas y ángulos donde se generaban fluctuaciones aleatorias sobre los ángulos formados, las separaciones y tamaños de las lineas, y las ubicaciones en el lienzo. Luego con estas imágenes ya creadas se seleccionaba para su utilización algunas que se adecuaran a los test a realizar.
+    
+    Algo que se implemento también en paralelo con la generación de los archivos SVG en si mismo, fue la creación de un archivo por imagen con un registro de las características de la figura generada en formato Json para que el software supiera interpretar el contenido de cada figura durante su ejecución. Junto a cada imagen se guardó las categorías geométricas a las que pertenecía dicha imagen (esto es fundamental para que el software pudiera reconocer si las respuestas indicadas por el usuario eran correctas o equivocadas), sus propiedades y parámetros geométricos con los que se la construyó (esta información queda registrada en los logs de las respuestas para que después se pueda corresponder el comportamiento del usuario en función de los valores con que se parametrizó la figura), y además se incluyo campos descriptivos a los efectos de facilitar la revisión del correcto funcionamiento del código y la detección de eventuales errores durante la fase de testeo. 
+    
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/678SVG.png}
+        \caption{Ejemplo de representación en código SVG de una figura de las utilizadas. Se observa que se trata de una variante de código XML. En el comentario inicial se almacena información acerca del contexto del algoritmo que lo crea. Luego se establece el estándar SVG y el tamaño del lienzo. Dentro, se pinta el fondo, y sobre él se agregan las lineas indicadas con las coordenadas de sus extremos. A la derecha se puede observar una renderización visual del contenido.}
+        \label{fig:SVGtoPNG}
+    \end{figure}
+    
+    Tambien, dado que finalmente el lenguaje utilizado para la programación de la aplicación no soportaba el uso de archivos SVG en tiempo real por ser algo poco eficiente en termino de uso de recursos (especialmente pensando en plataformas android) incluimos en el proceso de creación de los archivos SVG la creación de las correspondientes imagenes y su posterior agrupamiento (por niveles) en archivos ATLAS optimizados para el uso de memoria y procesador en tiempo de ejecución.
+    
+    En cuanto a la tarea de construir un algoritmo que transformara las figuras geométricas en sonido, lo primero que hicimos para limitar el problema fue restringirnos a segmentos rectos que se debían corresponder con rampas en frecuencia.
+    
+    Transformar el archivo SVG en un archivo de audio requirió solucionar las siguientes etapas:
+    
+    \begin{itemize}
+        \item Extraer del archivo SVG la informacion de cada linea a crear
+        \item Transformar los parametros correspondientes a extremos geometricos de cada linea en parametros de tiempo y frecuencia para los extremos de la rampa de sonido.
+        \item Crear la rampa de sonido correspondiente a cada segmento
+        \item Componer y normalizar correctamente el conjunto de rampas para conformar una secuencia de bits que represente la información sonora completa correspondiente a la imagen
+        \item Transformar la secuencia de bits en un archivo MP3 utilizable por el resto del software
+    \end{itemize}
+    
+    Para la extracción de la información correspondiente a cada linea, utilizamos una libreria existente en Java que permite recorrer la información de archivos XML, una vez extraida la información de los extremos de cada segmento y el tamaño del lienzo, debimos implementar los siguientes chequeos y procesamientos:
+    
+    \begin{itemize}
+        \item Revisar que la información este ordenada correctamente, es decir que primero este el extremo izquierdo y luego el derecho, en caso de que no, alternarlos. 
+        \item Revisar que los extremos de los segmentos se encontraran dentro del lienzo, ya que esto no tiene porque suceder si la imagen fue creada mal (a veces algunas combinaciones de parámetros mal diseñados pueden dar que un segmento exceda exceda el tamaño del lienzo). En este caso de detectar que el segmento excede el lienzo el código además de advertir en modo debug con un warning recorta el segmento hasta que toca el extremo del lienzo.
+        \item Realizar un cambio de escala según correspondiera a la configuración de como interpretar los tamaños. Esta funcionalidad nunca la utilizamos, pero al diseñar en términos conceptuales la representación sonora existía la libertad de establecer una escala de tamaño para el lienzo o para el pixel, en otras palabras no es lo mismo interpretar que un lienzo de 100x100 (tamaño usado) representa todo el espacio porque cada pixel representa un centésimo del espacio a interpretar que cualquier imagen sin importar su tamaño en pixeles debe abarcar todo el espacio disponible. 
+    \end{itemize}
+    
+    Una vez obtenida las coordenadas de los extremos del segmento a transformar en rampa sonora debíamos encontrar los correspondiente valores de tiempo y frecuencia para cada extremo. Para los valores temporales la cuenta se sencilla pues es lineal, por lo que la transformación esta dada por la ecuación \ref{ec:xTot}. Para los valores de frecuencia la cuenta debe incluir la elección de la escala que en el caso de las frecuencias no tiene porque ser lineal, pues el oído no interpreta en una escala lineal las frecuencias. Dado que el oído interpreta en escala logarítmica decidimos respetar esta escala incluyendo en el código la opción de utilizar una escala lineal que en los hechos nunca usamos. 
+    
+    También con la idea de utilizar la mayor parte del espectro audible en un principio decidimos utilizar el rango de los 100 a los 8000 Hz, sin embargo este rango resultó un tanto excesivo en el uso de los agudos creando en sonidos molestos a la hora de realizar los experimentos, por lo que luego de utilizar este rango en buena parte de las pruebas piloto decidimos hacer ingeniería inversa sobre la tecnología vOICe midiendo el espectro de frecuencias que dicha tecnología utilizaba. Encontramos que como limite superior de frecuencia el vOICe utilizaba 4000 Hz, un valor que efectivamente resulto mucho mas razonable. El limite inferior no lo pudimos detectar al realizar el espectro por lo que mantuvimos el valor de 100 Hz utilizado originalmente. 
+    
+    Por otro lado al implementar el código, e involucrar operaciones exponenciales nos encontramos con el problema de que numéricamente las computadoras no manejan fácilmente valores tan grandes (por mas que el resultado final fuera un numero manejable), por eso tuvimos que realizar las operaciones para calcular los parámetros de la representación utilizando una escala simbólica que fuera de 0 a 1 y luego reescalamos los resultados obtenidos a la escala real utilizada. Realizando las cuentas se puede observar que partiendo de la relación \ref{ec:yToFrecInicial} se llega a las expresiones  \ref{ec:yToF1}, \ref{ec:yToF2} y \ref{ec:yToF3}. En la implementación numérica de estas soluciones siempre utilizamos como base b a la base decimal. 
+    
+    \begin{equation}
+        \label{ec:xTot}
+        t = x \cdot \frac{T}{NroPixels}
+    \end{equation}
+    
+    \begin{equation}
+        \label{ec:yToFrecInicial}
+        Frec(y) = A \cdot b^{y} + B
+    \end{equation}
+    
+    con 
+    
+    \begin{equation*}
+        Frec(Y_{max}) = A \cdot b^{y_{max}} + B
+    \end{equation*}
+    
+    \begin{equation*}
+        Frec(Y_{min}) = A \cdot b^{y_{min}} + B
+    \end{equation*}
+    
+    donde se asume que $y_{min}=0$ por lo que que reescalando con Y* = Y/$Y_{max}$ queda que
+    
+    \begin{equation*}
+        Frec(y*) = A \cdot b^{y*} + B
+    \end{equation*}
+    
+    \begin{equation*}
+        Frec(Y*_{max}) = A \cdot b^{1} + B
+    \end{equation*}
+    
+    \begin{equation*}
+        Frec(Y*_{min}) = A \cdot b^{0} + B
+    \end{equation*}
+    
+    de donde sale que 
+    
+    \begin{equation}
+        \label{ec:yToF1}
+        A = \frac{Frec(Y_{max}) - Frec(Y_{min}) }{b^1-b^0}
+    \end{equation}
+    
+    \begin{equation}
+        \label{ec:yToF2}
+        B = ((Frec(Y_{max}) + Frec(Y_{min})) - A \cdot (b^1 + b^0)) / 2
+    \end{equation}
+    
+    \begin{equation}
+        \label{ec:yToF3}
+        Frec(Y) = A \cdot b^{Y/Y_{max}} + B
+    \end{equation}
 \clearpage
 
 
