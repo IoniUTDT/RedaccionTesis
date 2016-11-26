@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{setspace}
+\usepackage{subcaption}
 
 \title{Informe de tesis de licenciatura}
 \author{Ionatan Perez}
@@ -714,7 +715,7 @@
     
 \section{Mediciones y experimentos realizados}
 
-\subsection{Calibraciones y mediciones preliminares.}
+\subsection{Calibraciones y mediciones preliminares.} \label{resultados:preliminares}
 
     Como se mencionó en la sección \ref{seccion:panorama} la primer etapa del trabajo realizado consistió en un largo camino de pruebas de concepto donde evaluamos que aspectos de los que queríamos realizar eran factibles y cuales no, junto al desarrollo y perfeccionamiento de las herramientas que utilizaríamos mas adelante. 
     
@@ -835,16 +836,65 @@
     \begin{figure}
         \center
         \includegraphics[width=\textwidth]{Imagenes/Exp1_Saturacion.png}
-        \caption{Se compara el histograma de numero de respuestas correctas obtenidas por cada sujeto durante los últimos seis trials de cada StairCase en el experimento de ángulos a 90º, con la probabilidad de tener dicho numero de respuestas (lineas finas amarillas) correctas si los sujetos respondieran al azar. Los dos sujetos que respondieron todas mal tienen una probabilidad significativa (p=0.0077) de no estar respondiendo al azar sino al revés de lo que corresponde. Esto lo adjudicamos a que interpretan incorrectamente la posición del lado que no se mueve en los diferentes estímulos (ver figura \ref{fig:ImagenesExp1})}
+        \caption{Se compara el histograma de numero de respuestas correctas obtenidas por cada sujeto durante los últimos seis trials de cada StairCase en el experimento de ángulos a 90º, con la probabilidad de tener dicho numero de respuestas (lineas finas amarillas) correctas si los sujetos respondieran al azar. Los dos sujetos que respondieron todas mal tienen una probabilidad de 0.0924 de haber obtenido ese resultado al azar, por lo que la probabilidad conjunta es menor a 0.009. Este resultado estadisticamente muy improbable lo adjudicamos a que interpretan incorrectamente la posición del lado que no se mueve en los diferentes estímulos (ver figura \ref{fig:ImagenesExp1}). Este el único caso de todas las orientaciones posibles donde se observó el efecto, lo que se condice con la hipótesis planteada.}
         \label{fig:Exp1Saturacion}
     \end{figure}  
     
-    Para evaluar la hipótesis mencionada lo que realizamos fue una comparación entre el numero de respuestas que dio cada sujeto contra lo esperado en la hipótesis de que los sujetos respondieran al azar. El resultado se puede ver en la figura \ref{fig:Exp1Saturacion} donde se observa que mezclando las dos series de respuestas correspondientes a los dos StairCase que se ejecutan en cada nivel, hay dos sujetos cuyo mal desempeño tiene muy poca probabilidad de responder a respuestas al azar entre las tres opciones posibles (p=0.0077).
+    Para evaluar la hipótesis mencionada lo que realizamos fue una comparación entre el numero de respuestas que dio cada sujeto contra lo esperado en la hipótesis de que los sujetos respondieran al azar. El resultado se puede ver en la figura \ref{fig:Exp1Saturacion} donde se observa las dos series de respuestas correspondientes a los dos StairCase que se ejecutan en cada nivel mezcladas, hay dos sujetos cuyo mal desempeño tiene muy poca probabilidad de ser producto del azar, para el calculo comparamos contra la distribución de respuestas aleatorias pesando por el numero de muestra tomadas (corrección de Bonferroni) y luego calculamos la probabilidad conjunta de que dos sujetos hayan tenido tan mal desempeño. Al ser la probabilidad de este evento inferior a 0.009, es razonable suponer que hay algún sesgo en las respuestas incorrectas detrás del resultado. Y dado que de todas las orientaciones posibles esta es la única en la que se observaron desempeños marcadamente peores que los producto del azar, podemos suponer que el evento refleja la hipótesis de que la altura de un segmento vertical es difícil de determinar en el contexto estudiado.
     
-    Dado el mal diseño que tuvo el algoritmo StairCase en este experimento también debemos evaluar cuantos de los resultados 
+    También para poder distinguir los casos en los que los sujetos actuaron comprendiendo la tarea (y por ende tiene sentido decir que la medición realizada representa la percepción del sujeto) de los casos en los que los sujetos respondieron al azar, realizamos un análisis similar pero distinguiendo los sujetos que en el conjunto de las pruebas correspondientes a cada nivel (considerando los dos StairCase como una serie de respuestas) respondieron mejor que si se tratara de respuesta al azar. Para este análisis consideramos el hecho de que los diferentes sujetos reportaron diferente numero de respuestas (pues el StairCase diseñado puede finalizar el nivel antes de las 40 pruebas) y de que cada tipo de experimento (ángulos/paralelismo) tenia un chance diferente al responder al azar. Tomamos como criterio para distinguir, que muestras son validas y cuales no, si la muestra correspondiente a cada nivel por separado tenia probabilidad menor al 0.05 de ser una respuesta producto del azar. 
     
-		
+    En la figura \ref{fig:histoTrialsxNivel} puede visualizarse que la mayoría de los niveles concluyo en 40 trials, y que pocos de ellos se pueden atribuir al azar. Un ejemplo gráfico del análisis realizado para distinguir muestras validas de invalidas se puede ver en la figura \ref{fig:Exp1_Significancia}
+	
+	\begin{figure}
+        \center
+        \includegraphics[width=0.8\textwidth]{Imagenes/Exp1_NroRespuestas.png}
+        \caption{Histograma de numero de respuestas medidas por nivel (en total hay 72 niveles realizados). El numero esperado era 40, pero algunos niveles concluyeron con menos trials porque ambos StairCase (descriptos en la sección \ref{staircase2}) finalizaron antes. En color azul se indican los niveles cuyas mediciones superaron un test de signifícancia comparando contra respuestas al azar, en rojo los que nos.}
+        \label{fig:histoTrialsxNivel}
+    \end{figure}  
+	
+	
+	\begin{figure}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Imagenes/Exp1_Validas40A.png}
+            \caption{Resultados para las mediciones de ángulos donde la chance es un tercio}
+            \label{fig:sfig1}
+        \end{subfigure}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Imagenes/Exp1_Validas40P.png}
+            \caption{Resultados para las mediciones de paralelismo donde la chance es un medio}
+            \label{fig:sfig2}
+        \end{subfigure}
+        \caption{Figura donde se compara el histograma de respuestas correctas con la distribución esperada para cada tipo de experimento si se realizaran respuestas al azar. La linea vertical en verde indica a partir de que valores hay una probabilidad significativa ($pValue<0.05$) de que cada muestra no sea producto del azar. Se realizo el gráfico solo con el subconjunto de datos de 40 respuestas porque al variar este parámetro se modifica la distribución y como se puede observar en la figura \ref{fig:histoTrialsxNivel} este fue el valor que más muestras incluye}
+        \label{fig:Exp1_Significancia}
+    \end{figure}
+
+    Habiendo realizado este análisis, lo que nos propusimos fue comparar entre las muestras validas, como cambia el umbral de detección en función de la orientación. Los resultados pueden verse en la figura \ref{fig:Exp1Resultados} donde nos encontramos con el problema de, producto del descarte de datos, no todas las mediciones provienen del mismo conjunto de sujetos, ni resulta evidente que las tendencias observadas sean significativas. Un punto interesante a destacar de este resultados es que hay muchas menos muestras descartadas en los experimentos de ángulos que en los de paralelismo, pese a que se observa que es una tarea mas difícil. De hecho los únicos dos datos descartados se corresponden con los dos que respondieron sistemáticamente mal en el gráfico \ref{fig:Exp1Saturacion}. 
     
+    Una posible explicación para este efecto es que el StairCase utilizado da saltos mas grandes al inicio que al final, por lo que si un sujeto reconoce sistematicamente bien los estímulos fáciles converge rápidamente a la zona donde se busca que no pueda responder bien (es decir que se fuerza al sujeto a responder con chance aproximadamente un tercio), lo cual empeora su estadística. En cambio si un sujeto tarda en comenzar a responder bien porque le cuesta acostumbrarse a la tarea, el StairCase mostrar una aproximación tardía y lenta al umbral, lo que se corresponde con un elevado numero de respuestas correctas. Además, observamos que al tener la escala utilizada en los ángulos un paso más grande y ser el estímulo recto marcadamente diferente a los demás (en orientación 0º y 90º), en algunos casos los sujetos saturaron la escala en reconocer bien el estimulo (que por lo tanto se repite, como se ve en el ejemplo marcado en azul en la figura \ref{fig:staircase2}), cosa que no puede suceder en los experimentos de paralelismo. Ambos efectos combinados puede explicar porque hay tanta diferencia en el numero de muestras descartadas. 
+    
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/Exp1_Resultados.png}
+        \caption{Resultados obtenidos para la medición de umbral en las diferentes orientaciones y categorías. Si bien se observa una tendencia a que en los ejes el umbral sea menor, los resultados no son comparables porque pertenecen a un subconjunto diferente de los sujetos en cada orientación. En la figura \ref{fig:Exp1Comparacion} se realiza el correspondiente análisis estadístico entre las submuestras comparables de este conjunto.}
+        \label{fig:Exp1Resultados}
+    \end{figure}  
+	
+	\begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/Exp1_ResultadosDetalle.png}
+        \caption{Comparación entre los umbrales detectados por los sujetos según las diferentes orientaciones y categorías a las que pertenecían. En cada caso se comparó sólo muestras en donde los sujetos que habían realizado ambas pruebas superando en cada una test que distinguiera mediciones de respuestas aleatorias.}
+        \label{fig:Exp1_ResultadosDetalle}
+    \end{figure}  
+    
+    En la figura \ref{fig:Exp1_ResultadosDetalle} se puede observar la comparación final entre todos los datos estadísticamente comparables. EVIDENTEMENTE HAY UNA CUENTA MAL EN EL ULTIMO que no encoentre!, pero mas allá de eso se puede observar que en los experimentos de ángulos, es menos marcado el efecto de la proximidad de los estímulos a los ejes. Esta diferencia se puede explicar en el hecho de que aunque los segmentos que componen las figuras estén cercanos a los ejes, cada uno de ellos esta cercano a ejes diferentes, por lo que el efecto de posible comparación entre ambos descripto en la sección \ref{resultados:preliminares} no es aplicable, sino que los segmentos deberían ser comparados contra un estímulo imaginado.
+    
+    \subsection{Medición del efecto del entrenamiento en la mejora del umbral}
+    PENDIENTE
+	
+
 \clearpage
 
 
