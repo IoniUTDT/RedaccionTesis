@@ -64,7 +64,7 @@
     
     En particular, dentro de los problemas biológicos de percepción, el problema de la ceguera es un problema que conlleva limitaciones muy importantes para las personas que la sufren y que afecta a cerca de diez millones de personas en el mundo \cite{NroCiegos}. Como paliativo a dicha situación existen diferentes técnicas (algunas de muy baja complejidad, pero funcionalidad limitada) para sustituir sensorialmente los estímulos, como puede ser un bastón que al tacto permita reconocer obstáculos. Otras técnicas, mucho mas complejas y en actual desarrollo, apuntan a restituir la capacidad de visión mediante implantes que estimulen artificialmente al sistema nervioso\cite{Implantes1,Implantes2}, pero actualmente se encuentran en un estado muy temprano de desarrollo, solo sirven en casos específicos, poseen poca resolución y son muy invasivas \cite{Implantes3,Implantes4}. 
     
-    Alternativamente a las técnicas que buscan restituir la visión en personas ciegas, están las técnicas que sustituyen los estímulos, estos estímulos pueden ser reemplazados por estímulos táctiles o bien auditivos. La representación táctil de los estímulos visuales comparte la propiedad intrínseca de ser percibida en un sistema de coordenadas bidimencional (la piel y la retina ambos poseen sensores distribuidos en una superficie). Los trabajos pioneros en este técnica fueron realizados por Paul Bach-y-Rita \cite{Tactil1} quien diseñó un dispositivo que sujeto en la espalda de las personas podía reproducir imágenes filmadas por una cámara. Sin embargo la baja resolución de este dispositivo (20x20 pixeles), junto a su tamaño hicieron que sea poco practico. En posteriores trabajos \cite{Tactil2} se reemplazó el dispositivo por uno colocado en la legua (que posee una sensibilidad muy alta) donde además se reemplazó el mecanismo de estímulo por uno de pequeñas descargas eléctricas. Este trabajo solucionó en buena parte el problema de la portabilidad del dispositivo (que media 3cmx3cm con 12x12 pixeles), pero sin embargo su capacidad de distinguir objetos sigue siendo reducida \cite{Tactil3}, comparable (sin entrenamiento) a 20/860 \footnote{Esta manera de indicar la capacidad visual de una persona representa cuan lejos tiene que estar (medido en pies si el numerador es 20) de dos puntos para distinguirlos en relación a una persona con visión plena. Se suele considerar a una persona con problemas de ceguera cuando su capacidad esta por debajo de 20/200}. Estudios \cite{Tactil4} muestran que con entrenamiento los sujetos pueden mejorar en cu capacidad de percepción, sin embargo hay una limitación básica en la resolución que permite este dispositivos que esta dado por la separación espacial de los electrodos y la capacidad de la lengua de distinguirlos. 
+    Alternativamente a las técnicas que buscan restituir la visión en personas ciegas, están las técnicas que sustituyen los estímulos, estos estímulos pueden ser reemplazados por estímulos táctiles o bien auditivos. La representación táctil de los estímulos visuales comparte la propiedad intrínseca de ser percibida en un sistema de coordenadas bidimencional (la piel y la retina ambos poseen sensores distribuidos en una superficie). Los trabajos pioneros en este técnica fueron realizados por Paul Bach-y-Rita \cite{Tactil1} quien diseñó un dispositivo que sujeto en la espalda de las personas podía reproducir imágenes filmadas por una cámara. Sin embargo la baja resolución de este dispositivo (20x20 pixeles), junto a su tamaño hicieron que sea poco practico. En posteriores trabajos \cite{Tactil2} se reemplazó el dispositivo por uno colocado en la legua (la lengua una sensibilidad muy alta) donde además se reemplazó el mecanismo de estímulo por uno de pequeñas descargas eléctricas. Este trabajo solucionó en buena parte el problema de la portabilidad del dispositivo (que media 3cmx3cm con 12x12 pixeles), pero sin embargo su capacidad de distinguir objetos sigue siendo reducida \cite{Tactil3}, comparable (sin entrenamiento) a 20/860 \footnote{Esta manera de indicar la capacidad visual de una persona representa cuan lejos tiene que estar (medido en pies si el numerador es 20) de dos puntos para distinguirlos en relación a una persona con visión plena. Se suele considerar a una persona con problemas de ceguera cuando su capacidad esta por debajo de 20/200}. Estudios \cite{Tactil4} muestran que con entrenamiento los sujetos pueden mejorar en cu capacidad de percepción, sin embargo hay una limitación básica en la resolución que permite este dispositivos que esta dado por la separación espacial de los electrodos y la capacidad de la lengua de distinguirlos. 
     
     \begin{figure}
         \center
@@ -885,17 +885,131 @@
 	\begin{figure}
         \center
         \includegraphics[width=\textwidth]{Imagenes/Exp1_ResultadosDetalle.png}
-        \caption{Comparación entre los umbrales detectados por los sujetos según las diferentes orientaciones y categorías a las que pertenecían. En cada caso se comparó sólo muestras en donde los sujetos que habían realizado ambas pruebas superando en cada una test que distinguiera mediciones de respuestas aleatorias.}
+        \caption{Comparación entre los umbrales detectados por los sujetos según las diferentes orientaciones y categorías a las que pertenecían. En cada caso se comparó sólo muestras en donde los resultados pertenecieran a sujetos que realizaron ambas pruebas superado un test que permitiera asumir que no estaban respondiendo al azar. Esto se hizo para que que el test pudiera realizarse sobre muestras relacionadas.}
         \label{fig:Exp1_ResultadosDetalle}
     \end{figure}  
     
-    En la figura \ref{fig:Exp1_ResultadosDetalle} se puede observar la comparación final entre todos los datos estadísticamente comparables. EVIDENTEMENTE HAY UNA CUENTA MAL EN EL ULTIMO que no encoentre!, pero mas allá de eso se puede observar que en los experimentos de ángulos, es menos marcado el efecto de la proximidad de los estímulos a los ejes. Esta diferencia se puede explicar en el hecho de que aunque los segmentos que componen las figuras estén cercanos a los ejes, cada uno de ellos esta cercano a ejes diferentes, por lo que el efecto de posible comparación entre ambos descripto en la sección \ref{resultados:preliminares} no es aplicable, sino que los segmentos deberían ser comparados contra un estímulo imaginado.
+    En la figura \ref{fig:Exp1_ResultadosDetalle} se puede observar la comparación final entre todos los datos estadísticamente comparables. Se puede observar que la única orientación que muestra diferencias significativas con las demás es la de 30º, y que como se esperaba cuando las orientaciones de los segmentos están alejados de los ejes cartesianos la capacidad de distinguir entre las orientaciones de los segmentos disminuye. 
+    
     
     \subsection{Medición del efecto del entrenamiento en la mejora del umbral}
-    PENDIENTE
-	
+    
+    \subsubsection{Diseño y métodos}
+    
+    El objetivo de este experimento fue evaluar el efecto del entrenamiento en la capacidad de percepción de las categorías geométricas de paralelismo y ángulo recto. Se eligió realizar pruebas con formato similar al experimento anterior, pero mejorando el algoritmo de StairCase (ver sección \ref{staircase3}) y eligiendo orientaciones lejanas a los ejes para maximizar el posible efecto de mejora evitando saturar la medición. En todas las mediciones (o niveles) se propuso medir el umbral de detección como medida a comparar.
+    
+    Se eligió realizar pruebas de medición del umbral de detección en orientaciones de 30º, 60º, 120º y 150º en las categorías de ángulos y paralelismo. La elección de las orientaciones se realizó porque estas orientaciones combinadas con la construcción de los estímulos utilizados presentan un alto nivel de simetrías, tanto de rotación como de reflexión (ver figuras \ref{fig:simetrias}). Como protocolo para observar el efecto del entrenamiento se decidió realizar una evaluación inicial a todos los sujetos en todas las orientaciones propuestas, luego entrenar a algunos de ellos en una orientación especifica, y volver a realizar una evaluación en todas las orientaciones iniciales. 
+    
+    \begin{figure}
+        \begin{subfigure}{.47\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Imagenes/SimetriasOrientacionAngulos.png}
+            \caption{Simetrias presentes en los estímulos utilizados para las evaluaciones de percepción en ángulos.}
+        \end{subfigure}
+        \begin{subfigure}{.53\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Imagenes/SimetriasOrientacionParalelismo.png}
+            \caption{Simetrias presentes en los estímulos utilizados para las evaluaciones de percepción en paralelismo}
+        \end{subfigure}
+        \caption{Para realizar el experimento de entrenamiento se utilizaron estímulos con un alto nivel de simetría, de manera de poder observar posibles efectos de transferencia entre las diferentes transformaciones de simetría luego de entrenar en una orientación específica.}
+        \label{fig:simetrias}
+    \end{figure}
 
-\clearpage
+    A diferencia del experimento anterior, en cada orientación se generó una amplia variabilidad de estímulos, utilizando como parámetro de variabilidad pequeñas rotaciones además de las variaciones en la intensidad de la señal necesaria para la lógica del StairCase. Esta decisión estuvo basada en otro cambio que realizamos en la lógica del StairCase (ver sección \ref{staircase3}) y del diseño experimental que fue preguntar en cada estímulo explícitamente por las categorías paralelo/no paralelo y recto/no recto en lugar de preguntar hacia que 'lado' apunta el estímulo. De esta manera necesitabamos intercalar estímulos neutros entre los estímulos con señal por lo que debía haber muchos estímulos neutros similares pero no idénticos. La solución a esto fue generar un estimulo neutro en la orientación deseada y pequeñas rotaciones del mismo. A priori esto rompe la condición de que la medición sea en una orientación precisa, pero dado que no es el objetivo ver la dependencia con la orientación, y las orientaciones pensadas difieren mucho mas que las pequeñas rotaciones propuestas no consideramos que esto sea un problema. Dado que realizamos pequeñas rotaciones en los estímulos neutros, también lo hicimos en los estímulos con señal.
+    
+    En los estímulos de paralelismo, para cada orientación, se generaron 200 estímulos distribuidos linealmente en su intensidad entre los 0.1º y 50º. A su vez se crearon cinco rotaciones de cada uno de estos estímulos en 0º, $\pm$2.5º y $\pm$5º. Del estímulo neutro se generaron 20 rotaciones entre 10º y -10º (Como se puede ver en la figura \ref{fig:ImagenesExp2}). Para los ángulos se crearon las mismas fluctuaciones pero los estímulos variaron entre 1º y 80º. Además se crearon dos series más cortas en 180º y 0º para los tutoriales de ángulos y paralelismo. 
+    
+    La estructura de niveles se configuró en 40 estímulos por nivel para las evaluaciones iniciales y finales sin feedback. El entrenamiento se diseño como una secuencia de tres niveles uno con feedback de 100 estímulos, uno de 50 estímulos sin feedback, y uno final igual al inicial. Esta secuencia se repitió en cuatro sesiones (realizadas en días diferentes) con las orientaciones de 30º ya sea de ángulos o paralelismo. En el caso del entrenamiento el segundo y tercer nivel iniciaban es StairCase en el nivel de señal que concluyo el inmediato anterior. 
+    
+    Todo el protocolo experimental por el cual se convocó a sujetos, y se les explicó la tarea a realizar fue idéntico al mencionado en el experimento anterior con la diferencia de que tras la primer sesión (día de experimento) los sujetos simplemente concurrían al laboratorio y comenzaban con las mediciones. Además en este caso se les ofreció a los sujetos una recompensa económica al finalizar todas las sesiones de medición.
+    
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/ImagenesExp2.png}
+        \caption{Ejemplo de parte de los estímulos utilizados para el último experimento en la orientación 30º de ángulos. Se observa que hay 21 estímulos neutros rotados alrededor de la orientación media, y una mayor densidad de estímulos en comparación con el experimento anterior (figura \ref{fig:ImagenesExp1}).}
+        \label{fig:ImagenesExp2}
+    \end{figure}  
+    
+    \subsubsection{Resultados obtenidos}
+    
+    Con el procedimiento experimental mencionado concurrieron diez sujetos al laboratorio. Cinco de ellos realizaron el proceso de entrenamiento (tres en paralelismo y dos en ángulos), los otros cinco realizaron las mediciones de control. El limitado numero de sujetos que concurrió se debió a la dificultad de conseguir personas que estuvieran dispuestas a participar de seis sesiones diferentes con disponibilidad horaria suficiente como para que las mediciones no duraran mas de tres semanas. Por esta razón decidimos concluir el experimento con este limitado número de sujetos para analizar los resultados obtenidos hasta el momento.   
+    
+    Los datos medidos se pueden visualizar (previo a cualquier filtro o análisis de datos) en las figuras \ref{fig:Exp2_Test} y \ref{fig:Exp2_Entrenamiento} donde se muestra los umbrales medidos en la evaluación inicial y final en todos los sujetos por un lado y las mediciones realizadas sobre los sujetos que entrenaron por otro. Uno de los sujetos que entreno no realizó el proceso de entrenamiento completo ya que por problemas de disponibilidad no pudo asistir a todas las sesiones pero igualmente decidimos convocarlo para realizar la evaluación final. 
+
+                                                    
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/TransferenciaHeatmap.png}
+        \caption{Mediciones de umbral obtenidas en la evaluación inicial y final del experimento de entrenamiento. Cada linea representa un sujeto y cada columna un experimento realizado. Se agrupa a los sujetos según que tipo de entrenamiento realizaron.}
+        \label{fig:Exp2_Test}
+    \end{figure}  
+    
+    
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Imagenes/TransferenciaEntrenamientoNuevo.png}
+        \caption{Mediciones obtenidas durante los entrenamientos realizados a los sujetos. Cada sujeto (excepto uno) realizó cuatro sesiones de entrenamiento en cada una de las cuales realizó tres niveles. El tiempo transcurrido entre sesión y sesión fue de unos pocos dias.}
+        \label{fig:Exp2_Entrenamiento}
+    \end{figure}  
+
+
+    \subsubsection{Estudio del proceso de entrenamiento}
+    
+    Para analizar el proceso de entrenamiento nos propusimos estudiar cuatro indicadores, el primero fue si se observa un proceso global de mejora en los sujetos a lo largo del entrenamiento, el segundo si se observar una fluctuación dentro de cada sesión como proceso de entrenamiento diario, el tercero si el hecho de dar o no dar feedback afecta el umbral de percepción como un efecto agregado a la eventual mejora que el feedback proporcione en forma acumulada, y el cuarto, si las mediciones de las evaluaciones iniciales y finales se pueden enmarcar en el proceso de entrenamiento o si dan medidas diferentes a lo esperado como proyección del entrenamiento. 
+    
+    Para realizar todos estos estudios analizamos los datos realizando regresiones lineales con un modelo que agrupara la información con denominados 'factores fijos' que permiten agrupar la información según corresponda a cada análisis. Para el primer caso por ejemplo, el ajuste debería ser de la forma:
+    
+    \begin{equation} \label{ec:RegresionEntrenamiento1}
+        Y(i,t) = \beta \cdot t + cte_i
+    \end{equation}
+    
+    donde t representa el numero de nivel realizado (considerando todos los niveles realizados por un mismo usuario como una serie) e i indica el numero de sujeto analizado.
+
+    Para realizar este ajuste en forma de regresión lineal lo que debemos hacer es transformar los datos en la solución de una matriz donde una columna representa la repetición de la secuencia temporal (como denominamos a la variable t) y otras tantas columnas con indicadores binarios (ceros o unos) como criterios de desacople de datos se quiera realizar. Ejemplificado este proceso para un caso de cuatro niveles de entrenamiento, y tres sujetos, quedaría un sistema de la forma de la ecuación \ref{ec:MatrixExpandida}.
+
+    \begin{equation} \label{ec:MatrixExpandida}
+    \bar {Y} = \bar{\delta} \cdot \bar{\bar{X}} \text{ con } \bar{\bar{X}} =
+     \begin{pmatrix}
+        %\beta & \alpha_1 & \alpha_2 & \alpha_3 & \gamma_{inicial} & \gamma_{final} \\
+        0 & 1 & 0 & 0\\
+        1 & 1 & 0 & 0\\
+        2 & 1 & 0 & 0\\
+        3 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0\\
+        1 & 0 & 1 & 0\\
+        2 & 0 & 1 & 0\\
+        3 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1\\
+        1 & 0 & 0 & 1\\
+        2 & 0 & 0 & 1\\
+        3 & 0 & 0 & 1\\
+     \end{pmatrix} \text{ y $\bar{\delta}=(\beta,\alpha_1,\alpha_2,\alpha_3)$ el conjunto de parámetros a ajustar}
+ \end{equation}
+ 
+    Si en cambio se quisiera evaluar si el nivel intermedio de cada sesión difiere en forma significativa de la tendencia dada por los niveles iniciales y finales, para el caso simplificado donde dos sujetos realizaron dos sesiones de tres niveles, se debería ajusta el conjunto de parámetros dados por el sistema de la ecuación \ref{ec:Matrix2doDia}, donde se agrega una contante equivalente a ajustar la ordenada al origen (que en el caso anterior se ajustaba para cada sujeto en los $\alpha_i$), y se debe revisar si la variable $\alpha$ de este ajuste da significativamente distinta de cero. Mientras el conjunto de datos este correctamente balanceado respecto al numero de usuarios y demás variable que distingan el origen de las mediciones, distinguir los datos con factores fijos equivale a realizar un promedio de los datos según las categorías que distinga el factor fijo.
+
+    \begin{equation} \label{ec:MatrixExpandida}
+    \bar {Y} = \bar{\delta} \cdot \bar{\bar{X}} \text{ con } \bar{\bar{X}} =
+     \begin{pmatrix}
+        %\beta & \alpha_1 & \alpha_2 & \alpha_3 & \gamma_{inicial} & \gamma_{final} \\
+        0 & 1 & 0\\
+        1 & 1 & 1\\
+        2 & 1 & 0\\
+        3 & 1 & 0\\
+        4 & 1 & 1\\
+        5 & 1 & 0\\
+        0 & 1 & 0\\
+        1 & 1 & 1\\
+        2 & 1 & 0\\
+        3 & 1 & 0\\
+        4 & 1 & 1\\
+        5 & 1 & 0\\
+     \end{pmatrix} \text{ y $\bar{\delta}=(\beta,cte,\alpha)$ el conjunto de parámetros a ajustar}
+    \end{equation}
+
+
+
+
 
 
 \begin{thebibliography}{9}
