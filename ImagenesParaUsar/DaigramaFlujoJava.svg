@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r"
-   inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png"
+   inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/ImagenesParaUsar/FlujoJava.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="DaigramaFlujoJava.svg">
@@ -331,8 +331,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.42"
-     inkscape:cx="90.160108"
-     inkscape:cy="373.29755"
+     inkscape:cx="128.66517"
+     inkscape:cy="654.24993"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -925,8 +925,8 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#0000cc;stroke-width:3.19397831;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4)"
-       d="m 909.60571,319.26145 1.10846,-160.65746"
+       style="fill:none;fill-rule:evenodd;stroke:#0000cc;stroke-width:3.55712676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4)"
+       d="m 928.71829,373.10284 1.02028,-216.48845"
        id="path7988-4-4-4"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="90"
@@ -972,7 +972,7 @@
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';text-align:start;writing-mode:lr-tb;text-anchor:start"
          id="tspan15760">json-server</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2.93007922;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2)"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2.93000007;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:5.86000013,2.93000007;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2);stroke-dashoffset:0"
        d="m 278.48511,-76.386587 1.01493,147.672012"
        id="path7988-4-4-4-6-2-7"
        inkscape:connector-curvature="0"
@@ -980,7 +980,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54261994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2-4)"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54261994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.08523989,3.54261994;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2-4);stroke-dashoffset:0"
        d="M 49.203766,138.67963 -261.99729,366.90735"
        id="path7988-4-4-4-6-2-7-5"
        inkscape:connector-curvature="0"
@@ -988,7 +988,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54261994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2-4-6)"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54261994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:7.08523989,3.54261994;stroke-opacity:1;marker-end:url(#Arrow2Lend-7-8-6-4-2-2-2-4-6);stroke-dashoffset:0"
        d="M 920.97865,375.00346 609.7776,146.77574"
        id="path7988-4-4-4-6-2-7-5-4"
        inkscape:connector-curvature="0"
@@ -996,7 +996,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.78789771;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6,3;stroke-opacity:1;stroke-dashoffset:0"
        d="m -612.1435,-10.804844 46.62841,1.7487278"
        id="path7988-7-1-2"
        inkscape:connector-curvature="0"
@@ -1034,12 +1034,23 @@
          y="0.62493896"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start">Secuencia de uso</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:1.78789771;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -609.3142,-109.58533 46.62838,1.74873"
        id="path7988-7-1-2-0"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/ionatan/Gits/RedaccionTesis/Imagenes retocadas/FlujoJava.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-676.19049"
+       y="-240.49492"
+       id="text4449"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4451"
+         x="-676.19049"
+         y="-240.49492">Diagrama conceptual de la plataforma utilizada, las clases involucradas y la secuencia de uso</tspan></text>
   </g>
 </svg>
