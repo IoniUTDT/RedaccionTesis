@@ -13,7 +13,7 @@
 \usepackage{setspace}
 \usepackage{subcaption}
 \usepackage{booktabs}
-
+\usepackage[nottoc,numbib]{tocbibind}
 
 \numberwithin{figure}{section}
 
@@ -25,6 +25,127 @@
 
 
 \begin{document}
+
+
+
+
+
+
+
+
+
+
+\thispagestyle{empty}
+
+\begin{center}
+
+% Parte Superior
+ \begin{figure}[htb]
+\centering
+\includegraphics[width=0.45\textwidth]{./logo}
+\end{figure} 
+
+
+
+\textsc{\LARGE Universidad de Buenos Aires}\\[0.5cm]
+\textsc{\large Facultad de Ciencias Exactas y Naturales}\\[0.5cm]
+
+\textsc{  Departamento de Física Juan José Giambiagi}\\[0.5cm]
+%\textsc{Instituto de Astronomía y Física del Espacio (CONICET-UBA)}
+
+% Titulo
+
+\rule[1em]{40em}{0.5pt}
+\begin{center}
+%\huge Desarrollo, modelado y construcción del control térmico de un radiómetro de microondas en banda L\\
+%\huge Diseño y desarrollo del control térmico de un radiómetro de microondas en banda L\\
+\huge Estudio de percepción de invariantes geométricos mediante el uso de mecanismos de sustitución sensorial y la tecnología vOICe
+
+\end{center}
+
+%\normalsize\newline
+
+\rule[1em]{40em}{0.5pt}
+
+
+
+\textsc{\large Tesis de Licenciatura}\\[1cm]
+
+% Autores y Directores
+{\Large \textbf{
+Ionatan Perez}} \\ [1cm]
+
+\Large
+Director: Dr. Mariano Sigman\\[0.5cm]
+
+\vfill
+
+% Parte Inferior
+Diciembre 2016
+\end{center}
+
+\newpage\null
+\thispagestyle{empty}
+\newpage
+
+%\newpage
+\begin{flushleft}
+\thispagestyle{empty}
+TEMA: Estudio y caracterización de la percepción de patrones geométricos en un sistema de sustitución sensorial tipo vOICe\\
+
+ALUMNO: Ionatan Perez\\
+
+LU N$^{\circ}$: 115/05 \\
+
+LUGAR DE TRABAJO: Laboratorio de Neurociencia - Universidad Torcuato Di Tella\\
+
+DIRECTOR DEL TRABAJO: Dr. Mariano Sigman\\
+
+FECHA DE INICIACIÓN: Abril 2015 \\
+
+FECHA DE FINALIZACIÓN: Diciembre 2016\\
+
+FECHA DE EXAMEN: \\
+
+INFORME FINAL APROBADO POR:
+\end{flushleft}                                                              %
+                                                            %
+\vspace{2cm}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Autor &  \,\,\,\,\, \,\,\,\,\,\,\,\,\, \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,Jurado \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \,\,\,\,\,\,\,\,\,\,\,\, \\
+&            \\
+       &            \\
+  ..............................            &     ..............................          \\
+       &            \\
+
+\hline
+Director &      \,\,\,\,\, \,\,\,\,\,\,\,\,\, \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,Jurado \,\,\,\,\, \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \,\,\,\,\,\,\,\\
+&            \\
+       &            \\
+  ..............................            &       ..............................        \\
+         &            \\
+ \hline
+Profesora de Tesis de Licenciatura &  \,\,\,\,\,\,\, \,\,\,\,\, \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,Jurado \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, \,\,\,\,\,\\
+&            \\
+       &            \\
+  ..............................            &      ..............................         \\
+         &            \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+
 
 \spacing{1.5}
 
@@ -53,9 +174,8 @@
 }
 
 
-
-
-\maketitle
+\newpage\null
+\thispagestyle{empty}
 
 \clearpage 
 
@@ -425,7 +545,7 @@
     \end{figure}
 
     
-\subsection{Desarrollo del software utilizado}
+\subsection{Desarrollo del software utilizado} \label{seccion:software}
 
     La creación, escritura y diseño de la plataforma con el que se realizaron todas las mediciones fue el aspecto que más tiempo demandó a lo largo todo el trabajo. Para realizar las pruebas era necesario contar con alguna plataforma que permitiera realizar los test propuestos, y dado que se desconocía en un inicio como serían los resultados preliminares se intentó no limitar con la herramienta las posibilidades futuras. Es importante remarcar que si bien el desarrollo de la plataforma en si nunca fue el objetivo de este trabajo, si sirvió como aprendizaje para adquirir un enorme cantidad de conocimiento y experiencia en la tarea de programar y desarrollar un proyecto de cierta complejidad. 
     
@@ -450,7 +570,7 @@
     
     El desarrollo del software (al que se apodó Visound) estuvo muy ligado a los cambios de diseño experimental que se fueron realizando a lo largo del tiempo. Pese a que cualquier análisis del mismo en un momento dado implica ignorar las funcionalidades especificas que se fueron modificando hubo un proceso acumulativo a lo largo del tiempo. Para dar una noción del trabajo realizado se describirá por una parte estadísticas de la evolución temporal del proyecto y por otro breve detalle del código con que se realizó el último experimento. 
     
-    \subsubsection{Evolución y estadísticas de la plataforma con que se realizaron los experimentos}
+    \subsubsection{Evolución y estadísticas.}
     
     \begin{figure}
         \center
@@ -472,7 +592,7 @@
     
     Por otro lado como se puede ver en el detalle del contenido de los repositorios (ver figura \ref{fig:Lineas}) la cantidad de lineas incluidas en los archivos JAVA (donde esta el código escrito a mano del proyecto) no varió significativamente entre el final de la etapa de preliminar y la última versión del experimento. Sin embargo la cantidad de lineas no es necesariamente una medida de calidad, ni de trabajo, ya que durante todo el proceso de escritura el código fue revisado y fueron reelaboradas la estructura de las clases, los objetos y la lógica de funcionamiento para hacer cada vez mas abstracto y flexible el código. En general el desarrollo de cada funcionalidad consistió en una primera versión de prueba y puesta a punto con alguna implementación especifica y una posterior reescritura para parametrizar e integrarlo al código general de forma que lo pensado pudiera adaptarse a diferentes implementaciones correspondientes a diferentes diseños experimentales. 
     
-    \subsubsection{Estructuras y especificaciones de la plataforma desarrollada.}
+    \subsubsection{Estructuras y especificaciones.}
     
     \begin{figure}
         \center
@@ -518,7 +638,7 @@
         \label{fig:Pantallas2}
     \end{figure}
     
-    \subsubsection{El registro de los datos}
+    \subsubsection{El registro de los datos.}
     
     Los datos registrados por la aplicación fue variando según el avance del desarrollo de la misma. En un principio se decidió registrar todos los eventos necesarios para poder reconstruir por completo lo realizado por el usuario. Esta decisión resultó poco práctica porque involucraba la generación de un volumen de datos innecesario y ralentizaba todos los aspectos involucrados en el envió y almacenamiento de los datos. 
     En versiones posteriores se redujo el registro a la información más relevante. Si bien varió levemente debido a los cambios en el diseño experimental (que involucraron cambios en las estructuras de datos a enviar) el conjunto de datos registrados por la aplicación puede resumirse en lo siguiente:
@@ -532,7 +652,7 @@
     
     Para recolectar los datos se debía contar con algún tipo de servidor disponible que fuera capaz de recibir los envíos de la aplicación y guardar la información. Si bien siempre se implementó una copia local de los registros, la idea era en un principio que la aplicación estuviera disponible en celulares donde era imposible acceder a los registro de los sujetos si no se envían. Para ello se decidió montar un servidor json-server \url{https://github.com/typicode/json-server} sencillo de instalar y que corre en casi cualquier computadora. El problema que surgió fue que la red de la institución donde se hizo el trabajo (Universidad Torcuato Di Tella) no permitía el acceso externo a un servidor montado en el laboratorio, por lo que se decidió dedicar un servidor externo (accesible a través de una IP hogareña a la que se asoció un dominio \url{http://turintur.dynu.com/} todavía activo) que corre en un sistema operativo raspbian en un dispositivo raspberry dedicado a tal efecto. Todos los registros generados (tanto en versión local como remota) siempre fueron almacenados en formato JSON (\url{http://www.json.org/}) que es un estándar muy difundido para guardar estructuras de datos en formato texto legible por humanos. 
     
-    \subsubsection{Generación automática de la estructura de niveles, trials y estímulos} \label{seccion:builder}
+    \subsubsection{Generación automática de la estructura de niveles, pruebas y estímulos} \label{seccion:builder}
     
     La generación de la estructura de niveles, Trials y estímulos fue desarrollándose a lo largo de las diferentes pruebas preliminares y experimentos, hasta converger a un proceso prácticamente automático que a partir de ciertos parámetros conceptuales es capaz de generar toda la estructura en forma consistente. Se describe a continuación y en forma conceptual los elementos y procedimientos que permiten tan tarea. 
     
@@ -805,11 +925,11 @@
         \label{fig:Exp1Saturacion}
     \end{figure}  
     
-    Para evaluar la hipótesis mencionada lo que realizamos fue una comparación entre el número de respuestas que dio cada sujeto (en las últimas seis pruebas de cada StairCase) contra lo esperado bajo la hipótesis de que los sujetos respondieran al azar. El resultado se puede ver en la figura \ref{fig:Exp1Saturacion} donde se observa ya mezcladas las dos series de respuestas que se ejecutan en cada nivel. Hay dos sujetos cuyo mal desempeño tiene muy poca probabilidad de ser producto del azar, para realizar el cálculo comparamos contra la distribución de respuestas aleatorias cuál era la probabilidad de responder doce respuestas incorrectas. Con esta probabilidad (que vale 0.0077) se consideró un nuevo problema equivalente que consiste en saber la probabilidad de obtener 2 aciertos o más (sobre doce pruebas) cuando en cada intento se tiene una probabilidad de 0.0077 de acertar. Este resultado dio 0.00372 que está claramente por debajo de lo que suele considerarse un límite significativo (en general salvo que se aclare lo contrario se considera significativa una probabilidad menor a 0.05 de que suceda la hipótesis nula). Dado que se repitió éste análisis para todas las demás orientaciones ésta es la única en la que se observaron desempeños marcadamente peores que los producto del azar. Podemos suponer que el evento refleja la hipótesis de que la altura de un segmento vertical es difícil de determinar en el contexto estudiado.
+    Para evaluar la hipótesis mencionada lo que se realizó fue una comparación entre el número de respuestas que dio cada sujeto (en las últimas seis pruebas de cada StairCase) contra lo esperado bajo la hipótesis de que los sujetos respondieran al azar. El resultado se puede ver en la figura \ref{fig:Exp1Saturacion} donde se observa ya mezcladas las dos series de respuestas que se ejecutan en cada nivel. Hay dos sujetos cuyo mal desempeño tiene muy poca probabilidad de ser producto del azar, para realizar el cálculo comparamos contra la distribución de respuestas aleatorias cuál era la probabilidad de responder doce respuestas incorrectas. Con esta probabilidad (que vale 0.0077) se consideró un nuevo problema equivalente que consiste en saber la probabilidad de obtener 2 aciertos o más (sobre doce pruebas) cuando en cada intento se tiene una probabilidad de 0.0077 de acertar. Este resultado dio 0.00372 que está claramente por debajo de lo que suele considerarse un límite significativo (en general salvo que se aclare lo contrario se considera significativa una probabilidad menor a 0.05 de que suceda la hipótesis nula). Se repitió éste análisis para todas las demás orientaciones y ésta es la única en la que se observaron desempeños marcadamente peores que los producto del azar. Podemos suponer que el evento refleja la hipótesis de que la altura de un segmento vertical es difícil de determinar en el contexto estudiado.
     
-    También para poder distinguir los casos en los que los sujetos actuaron comprendiendo la tarea (y por ende tiene sentido decir que la medición realizada representa la percepción del sujeto) de los casos en los que los sujetos respondieron al azar, se realizó un análisis similar pero distinguiendo las mediciones donde el número de respuestas correctas fue significativamente mejor que la hipótesis nula. Un ejemplo gráfico del análisis realizado para distinguir mediciones de umbral válidas de inválidas se puede ver en la figura \ref{fig:Exp1_Significancia}. Cabe aclarar que si el StairCase funciona adecuadamente, los sujetos deberían responder algunas pruebas mal, pero en una proporción menor que chance. Además, en este análisis se consideraron todas las mediciones realizadas por cada sujeto en cada nivel, lo que incluye las mediciones iniciales donde los estímulos son mas fáciles que cuando el nivel de señal se estabiliza. 
+    También para poder distinguir los casos en los que los sujetos actuaron comprendiendo la tarea (y por ende tiene sentido decir que la medición realizada representa la percepción del sujeto) de los casos en los que los sujetos respondieron al azar, se realizó un análisis similar pero distinguiendo las mediciones donde el número de respuestas correctas fue significativamente mejor que la hipótesis nula. Un ejemplo gráfico del análisis realizado para distinguir mediciones de umbral válidas de inválidas se puede ver en la figura \ref{fig:Exp1_Significancia}. Cabe aclarar que si el StairCase funciona adecuadamente, los sujetos deberían responder algunas pruebas mal, pero en una proporción menor que chance, y que la chance cambia según el tipo de experimento. Además, en este análisis se consideraron todas las mediciones realizadas por cada sujeto en cada nivel, lo que incluye las mediciones iniciales donde los estímulos son mas fáciles que cuando el nivel de señal se estabiliza. 
     
-    De este análisis resultó que solo 12 de las 72 mediciones estadísticamente son iguales o peores que se debieran al azar. Pero este resultado probablemente este sobrevaluado, ya que por ejemplo se incluye al menos los sujetos que interpretaron sistemáticamente mal los estímulos en algún nivel (datos que igualmente no sirven para determinar un umbral), y se considera como inválidas mediciones que podrían deberse a la distribución estadística alrededor del valor esperado como resultado del correcto funcionamiento del StairCase \footnote{Determinar esta distribución es complicado porque el algoritmo usado conserva memoria y además hay una desviación producto de que la dificultad de reconocer estímulos debería incrementarse a lo largo de las consecutivas pruebas (dentro de un mismo nivel o experimento)}.
+    De este análisis resultó que solo 12 de las 72 mediciones estadísticamente son iguales o peores que si se debieran al azar. Pero este resultado probablemente este sobrevaluado, ya que por ejemplo se incluye al menos los sujetos que interpretaron sistemáticamente mal los estímulos en algún nivel (datos que igualmente no sirven para determinar un umbral), y se considera como inválidas mediciones que podrían deberse a la distribución estadística alrededor del valor esperado como resultado del correcto funcionamiento del StairCase \footnote{Determinar esta distribución es complicado porque el algoritmo usado conserva memoria y además hay una desviación producto de que la dificultad de reconocer estímulos debería incrementarse a lo largo de las consecutivas pruebas (dentro de un mismo nivel o experimento)}. Este efecto es más fuerte en paralelismo, donde chance de responder bien al azar es más grande.
 	
 % 	\begin{figure}
 %         \center
@@ -836,7 +956,7 @@
         \label{fig:Exp1_Significancia}
     \end{figure}
 
-    Habiendo realizado este análisis, lo que se hizo fue comparar entre las muestras válidas, cómo cambia el umbral de detección en función de la orientación. Los resultados pueden verse en la figura \ref{fig:Exp1Resultados} donde nos encontramos con el problema de que no todas las mediciones provienen del mismo conjunto de sujetos, producto del descarte de datos. Un punto interesante a destacar de este resultados es que hay muchas menos muestras descartadas en los experimentos de ángulos que en los de paralelismo, pese a que se observa que es una tarea mas difícil. De hecho los únicos dos datos descartados se corresponden con los dos que respondieron sistemáticamente mal en la orientación 90º (figura \ref{fig:Exp1Saturacion}). 
+    Habiendo realizado este análisis, lo siguiente que se hizo fue comparar entre las muestras válidas, cómo cambia el umbral de detección en función de la orientación. Los resultados pueden verse en la figura \ref{fig:Exp1Resultados} donde nos encontramos con el problema de que no todas las mediciones provienen del mismo conjunto de sujetos, producto del descarte de datos. Un punto interesante a destacar de este resultados es que hay muchas menos muestras descartadas en los experimentos de ángulos que en los de paralelismo, pese a que se observa que es una tarea mas difícil. De hecho los únicos dos datos descartados se corresponden con los dos que respondieron sistemáticamente mal en la orientación 90º (figura \ref{fig:Exp1Saturacion}). 
     
     Una posible explicación de este efecto es que el StairCase utilizado da saltos más grandes al inicio que al final, por lo que si un sujeto reconoce sistematicamente bien los estímulos fáciles converge rápidamente a la zona donde se busca que no pueda responder bien (es decir que se fuerza al sujeto a responder con chance aproximadamente un tercio), lo cual empeora su estadística. En cambio si un sujeto tarda en comenzar a responder bien porque le cuesta acostumbrarse a la tarea, el StairCase mostrar una aproximación tardía y lenta al umbral, lo que se corresponde con un elevado numero de respuestas correctas. Además, observamos que al tener la escala utilizada en los ángulos un paso más grande y ser el estímulo recto marcadamente diferente a los demás (en orientación 0º y 90º), en algunos casos los sujetos saturaron la escala en reconocer bien el estímulo (que por lo tanto se repite y es muy reconocible, como se ve en el ejemplo marcado en azul en la figura \ref{fig:staircase2}), cosa que no puede suceder en los experimentos de paralelismo. Ambos efectos combinados pueden explicar porque hay tanta diferencia en el número de muestras descartadas comparando ambas categorías. 
     
@@ -1126,39 +1246,63 @@
         \label{fig:TransferenciaAngulosBarras}
     \end{figure}  
     
-\section{Discusion de resultados y perspectivas a futuro}
+\section{Discusión de resultados y perspectivas a futuro}
     
-    El objetivo general del trabajo realizado fue estudiar la capacidad de percibir características geométricas en un entorno de representación de estímulos equivalente al vOICe. Partiendo de que este sistema permite representar imágenes complejas se quiso estudiar la capacidad de percibir aspectos más abstractos pero a la vez más sencillos a través de estímulos generados a tal efecto. En el camino nos encontramos con que este cambio de paradigma no solo implicó estudiar un aspecto diferente de la percepción sino también introducir cambios estructurales en el proceso de generación de los estímulos necesarios y su traducción al sistema de representación sonoro. 
+    El objetivo general del trabajo realizado fue estudiar la capacidad de percibir características geométricas en un entorno de representación de estímulos equivalente al vOICe. Partiendo de que este sistema permite representar imágenes complejas se quiso estudiar la capacidad de percibir aspectos más abstractos pero a la vez más sencillos a través de estímulos generados a tal efecto. En el camino se encontró que este cambio de paradigma no solo implicó estudiar un aspecto diferente de la percepción sino también introducir cambios estructurales en el proceso de generación de los estímulos necesarios y su traducción al sistema de representación sonoro. 
     
-    Al hacer estudios preliminares resultó que la técnica utilizada por el vOICe para representar la información visual en su correlato sonoro implicaba una perdida de información geometrica debido al proceso de pixelización. Esta perdida era incompatible con el hecho de preservar la información conceptual necesaria para realizar las mediciones propuestas además de introducir perturbaciones que deterioran la calidad sonora del estimulo buscado. Frente a esto se debió revisar el sistema utilizado para transformar las figuras geométricas en estímulos de manera de evitar el proceso de pixelación inherente a representar las figuras geométricas en forma de imagen. La lógica utilizada fue la misma del vOICe, pero en lugar de concatenar sonidos de frecuencias diferentes según las posiciones de los pixeles se crearon rampas de frecuencia con un cambio continua en la misma. Esta diferencia, que en un principio puede parecer un aspecto técnico, probablemente tenga implicancias más sutiles en los limites de validez de los resultados obtenidos. 
+    Al hacer estudios preliminares resultó que la técnica utilizada por el vOICe para representar la información visual en su correlato sonoro implicaba una pérdida de información geométrica debido al proceso de pixelización. Esta pérdida era incompatible con el hecho de preservar la información conceptual necesaria para realizar las mediciones propuestas además de introducir perturbaciones que deterioran la calidad sonora del estímulo buscado. Frente a esto se debió revisar el sistema utilizado para transformar las figuras geométricas en estímulos de manera de evitar el proceso de pixelación inherente a representar las figuras geométricas en forma de imagen. La lógica utilizada fue la misma del vOICe, pero en lugar de concatenar sonidos de frecuencias diferentes según las posiciones de los pixeles se crearon rampas de frecuencia con un cambio continuo en la misma. Esta diferencia, que en un principio puede parecer un aspecto técnico, probablemente tenga implicancias más sutiles en los límites de validez de los resultados obtenidos. 
     
-    Independientemente de los desarrollos de las herramientas necesarias para realizar los experimentos (que fueron una parte sustancial del trabajo realizado), conforme se fueron realizando pruebas preliminares, resultó que lo que en un principio se había asumido como un sistema de representación equivalente al visual (ya que posee dos variables independientes para representar información de un espacio bidimencional) no resultaba tan evidente. Con las primeras pruebas realizadas se encontró que la capacidad de detección de patrones era muy dependiente de la orientación de las figuras representadas, y en particular de la orientación de los segmentos que las conformaban. Es decir que había una ruptura de la simetría de rotación muy marcada a la hora de reconstruir las formas geométricas.
+    Independientemente del desarrollo de las herramientas necesarias para realizar los experimentos (que fueron una parte sustancial del trabajo realizado), conforme se fueron realizando pruebas preliminares, resultó que lo que en un principio se había asumido como un sistema de representación equivalente al visual (ya que posee dos variables independientes para representar información de un espacio bidimensional) no resultaba tan evidente. Con las primeras pruebas realizadas se encontró que la capacidad de detección de patrones era muy dependiente de la orientación de las figuras representadas, y en particular de la orientación de los segmentos que las conformaban. Es decir que había una ruptura de la simetría de rotación muy marcada a la hora de representar y percibir las formas geométricas.
     
-    Luego de construir las herramientas necesarias para poder presentar los estímulos a los sujetos y por lo tanto estar en condiciones de realizar un experimento para observar los efectos del entrenamiento, surgió un dilema importante. Las pruebas realizadas hasta el momento mostraban que los sujetos eran capaces de distinguir figuras en el sistema de representación utilizado incluso con un muy limitado proceso de entrenamiento previo. Este hecho que resultaba muy promisorio (pues en el contexto de figuras complejas el entrenamiento requerido era extremadamente largo) traía aparejados dos problemas. En primer lugar que no sabíamos donde estaba la dificultad en el proceso de detección, por lo tanto no sabíamos que estímulos utilizar para realizar y observar un efecto producto del entrenamiento. En segundo lugar que el proceso de entendimiento realizado sobre los estímulos generados en nuestro sistema muy probablemente fuera diferente al entendimiento realizado sobre los estímulos generados por la versión original de vOICe. 
+    Tras las pruebas preliminares, cuando se estuvo en condiciones de realizar un experimento para observar los efectos del entrenamiento, surgió un dilema importante. Las pruebas realizadas mostraban que los sujetos eran capaces de distinguir figuras incluso con un muy limitado proceso de entrenamiento previo. Este hecho que resultaba muy promisorio (pues en el contexto de figuras complejas el entrenamiento requerido era extremadamente largo) traía aparejadas dos implicancias. En primer lugar que no se sabía donde estaba la dificultad en el proceso de detección, por lo tanto no se  sabía qué estímulos utilizar para observar un efecto producto del entrenamiento. En segundo lugar que el proceso de interpretación observado muy probablemente fuera diferente al realizado sobre los estímulos generados por la versión original de vOICe. 
+    
+    La solución al primero de los dos problemas planteados fue cambiar el enfoque de estudio. Hasta ese momento se asumió que generando estímulos genéricos se podrían distinguir las capacidades de todos los sujetos. Pero al observar que la capacidad de interpretar presentaba un comportamiento casi binario frente a un conjunto de estímulos muy variados, se debió enfocar el esfuerzo en identificar el punto de inflexión en la habilidad de reconocer aspectos geométricos específicos. Además ese punto de inflexión (o umbral) probablemente dependiera de cada sujeto. 
+    
+    Respecto al segundo aspecto observado, en realidad lo que hizo fue poner de manifiesto el hecho de que haya aspectos estrictamente sonoros expresados en forma pura (que en figuras complejas están tapados por el ruido que genera el resto del estímulo) puede facilitar mucho la capacidad de interpretar en forma conceptual los estímulos. En otras palabras que el limitante en la tecnología vOICe probablemente no este en la capacidad de representar la información en si, sino en los sujetos y su capacidad de aislar los aspectos de interés del resto del sonido.
+    
+    Como por otro lado, de las pruebas preliminares se había observado que los estímulos completamente horizontales o verticales eran muy identificables y además representan puntos de inflexión donde cambia cualitativamente el sonido, pues al ser rotados los segmentos pasan de ser ascendente a descendente en frecuencias. Se decidió entonces cuantificar este hecho. El objetivo propuesto fue analizar la dependencia del umbral necesario para detectar que dos rectas no son paralelas y como varía en función de la orientación. El experimento propuesto tenía varios objetivos, por un lado desarrollar toda la logística asociada a poder realizar una medición de umbral, que se revelaba como necesaria para realizar cualquier medición futura, y además comprobar que efectivamente había una dependencia con la orientación en la facilidad para detectar la orientación exacta de un segmento. 
+    
+    De los experimentos resultó que efectivamente en orientaciones lejanas a los ejes cartesianos es más difícil determinar la orientación de un segmento (o más exactamente comparar su orientación con respecto a otro). Esto confirmó que el sistema de representación utilizado es marcadamente no invariante frente a rotaciones, en lo cual difiere con el sistema de representación visual. Si bien no se midió sobre un número elevado de sujetos, en las mediciones realizadas también se observó una fuerte variabilidad inter-sujeto a la hora de determinar la capacidad de percepción. 
+    
+    Una vez comprobada la hipótesis de que lejos de los ejes la capacidad de distinguir estímulos era menor que cerca de ellos, y con las herramientas necesarias para cuantificar la dificultad de los estímulos en tiempo real para cada usuario, el siguiente experimento propuesto fue realizar un proceso de entrenamiento en una orientación dada con el objetivo de observar qué efectos producía en los sujetos el entrenamiento realizados. Se buscó observar el proceso de entrenamiento en si, y si los efectos del entrenamiento eran transferidos entre orientaciones (es decir si el sujeto adquiere una habilidad general independientemente de la orientación en que sean los estímulos) o si solo se observaba mejora en la tarea específica.
+    
+    Este último experimento fue diseñado desconociendo cuan largo debía ser el entrenamiento para que se observara algún efecto, por esta razón se realizó una medición con un número limitado de sujetos y se analizaron los resultados obtenidos antes de continuar la medición. De los datos medidos se observó que contrariamente a lo esperado, no se dio un proceso de aprendizaje continuo en el tiempo que mostrara una mejora mayor, a mayor tiempo entrenado. Si observamos que hay algún proceso por el cual los sujetos entrenados (todos excepto uno\footnote{Este sujeto mostró un efecto similar pero levemente mas lento}) mejoran mucho tras concluir la primer instancia de entrenamiento, y luego no mejoran más. Al menos en una medida perceptible en los tiempo medidos. En forma contraria no se logró observar una mejora clara del desempeño de los sujetos al realizar las sucesivas pruebas de la evaluación inicial, en donde no había entrenamiento explicito con feedback y las orientaciones iban cambiando. 
+    
+    Estos resultados juntos permiten sugerir (más allá de que el número de sujetos es muy limitado y cualquier generalización requiere comprobar la validez estadística) que la presencia del feedback desencadena algún tipo de entendimiento que mejora en forma cualitativa el desempeño de los sujetos y que la posterior presencia del feedback no induce nuevas mejoras. Hay también que mencionar que todos los conjuntos de sujetos (hayan entrenado o no) han mostrado una mejora al comparar una medición inicial con una final, ambas sin feedback, ideadas como control. Pero en estas comparaciones el muy bajo numero de participantes no permite distinguir cuanto de este efecto se debe a una mejora en los sujetos individuales y cuanto a una fluctuación al azar debido a la variabilidad inter-sujetos. 
+    
+    Visto en perspectiva, cuando se comenzó con los estudios se tenía la hipótesis de que así como el entrenamiento continuo y extendido en el tiempo producía una evolución en la capacidad de distinguir estímulos complejos, frente a estímulos sencillos sucedería algo equivalente pero en tiempos más cortos. Al parecer esto no era del todo correcto, ya que hay procesos y aspectos cualitativos que son los que determinan la dificultad de percibir los estímulos. Es probable que estos mismos procesos y limitaciones estén incluidos en la percepción de figuras complejas, pero que sus efectos estén solapados detrás de la dificultad mucho mayor que implica poder distinguir y procesar sonidos específicos en el estímulo complejo. En los experimentos realizados esta dificultad no existía.
+    
+    Con estos resultados a la vista resulta claro que el proceso de medición ideado en el último experimento debe ser revisado, pues el entrenamiento (al menos en los términos planteados hasta ahora), no parece ser producto de una acumulación de experiencia sino de la presencia de ciertos elementos que le permitan a los sujetos adquirir la habilidad de distinguir los estímulos y sus propiedades geométricas. 
+    
+    Como cada vez hay mayores indicios de que la capacidad de distinguir las características geométricas no se adquieren en forma continua, ni dependen en forma continua con la orientación cabe preguntarse cuál es el origen cualitativo de esta distinción y tratar de enfocar el trabajo en éste aspecto. Para ellos probablemente tenga sentido generar experimentos de corta duración donde se haga variar el sistema de entrenamiento para encontrar cuándo y por qué esto sucede. 
+    
+    A futuro, bajo esta hipótesis nueva, se pueden utilizar todas las tecnologías desarrolladas (que incluyen la posibilidad de realizar experimentos cortos a distancia vía teléfonos celular o internet) para pensar experimentos variados y cortos que presenten desafíos diversos de dificultad creciente. En una tarea intrínsecamente exploratoria, se podría buscar cuáles son los que muestran una más rápida evolución en la capacidad de mejorar la percepción de lo deseado. 
+    
+    Por otro lado, independientemente de las limitaciones que se han encontrado a la hora de cuantificar el efecto del entrenamiento en la percepción, es importante destacar que se ha observado una marcada capacidad de distinguir patrones geometricos específicos, en particular cuando los estímulos están conformados por segmentos horizontales y verticales. Los segmentos horizontales y verticales son los que constituyen buena parte de los estímulos geométricos que nos rodean (en particular en entornos artificiales y digitales), por lo que esto es un resultado prometedor a la hora de pensar ésta tecnología como lo que es, una herramienta para facilitar la percepción a personas que carecen del sentido de la visión. 
+    
+    En este sentido también se podrían diseñar estudios para extender los resultados que indican la capacidad de reconocer patrones específicos a cuestiones que no se han estudiado hasta ahora, como por ejemplo los tamaños y las localizaciones de los segmentos, o bien a estudiar hasta que punto se pueden repetir estas observaciones cuando se mezcla los estímulos con otros elementos diferentes en una misma imagen o en estímulo más complejo. 
+    
         
-    La solución al primero de los dos problemas planteados fue cambiar el enfoque de estudio. Hasta ese momento asumíamos que generando estímulos genéricos se podría distinguir las capacidades de todos los sujetos, pero al observar que la capacidad de interpretar presentaba un comportamiento casi binario frente a un conjunto de estímulos muy variados, se debió enfocar el esfuerzo en identificar el punto de inflexión en la habilidad de reconocer aspectos geométricos específicos, y además ese punto de inflexión (o umbral) al ser tan marcado probablemente resultaría muy dependiente de cada sujeto. 
-    
-    Respecto al segundo aspecto observado, en realidad lo que hizo fue poner de manifiesto que el hecho de distinguir ciertos patrones sonoros (que en figuras complejas están tapados por el ruido que genera el resto del estímulo) puede facilitar mucho la capacidad de interpretar en forma categórica esos estímulos. En otras palabras que el limitante en la tecnología vOICe probablemente no este en la capacidad de representar la información en si, sino en los sujetos y su capacidad de aislarla del resto del sonido.
-    
-    Como por otro lado de las pruebas preliminares se había observado que los estímulos completamente horizontales o verticales eran muy fácilmente identificables y además representan puntos de inflexión donde cambia cualitativamente el sonido al ser rotados los segmento (pues pasa de ser ascendente a descendente en frecuencias), se decidió cuantificar este hecho. El objetivo propuesto fue analizar la dependencia del umbral necesario para detectar que dos rectas no son paralelas en función de la orientación. El experimento propuesto tenia varios objetivos, por un lado desarrollar toda la logística asociada a poder realizar una medición de umbral, que se revelaba como necesaria para realizar cualquier medición futura, y además comprobar que efectivamente había una dependencia con la orientación en la facilidad para detectar la orientación exacta de un segmento. 
-    
-    Obviando los detalles experimentales ya detallados en el cuerpo de este informe, de los experimentos resultó que efectivamente en orientaciones lejanas a los ejes cartesianos es mas difícil determinar la orientación de un segmento (o mas exactamente comparar su orientación con respecto otro). Esto tiene como implicación que el sistema de representación utilizado es marcadamente no invariante frente a rotaciones, en lo cual difiere con el sistema de representación visual. Si bien no se midió sobre un numero elevado de sujetos, en la muestra realizada también se observó un fuerte variabilidad inter-sujeto a la hora de determinar la capacidad de percepción. 
-    
-    Una vez comprobada la hipótesis de que lejos de los ejes la capacidad de distinguir estímulos era menor que cerca de ellos, y con las herramientas necesarias para cuantificar la dificultad de los estímulos en tiempo real para cada usuario, el siguiente experimento propuesto fue realizar un proceso de entrenamiento en una orientación dada con el objetivo de observar que efectos producía en los sujetos el entrenamiento realizados. Se busco observar el proceso de entrenamiento en si, y si los efectos del entrenamiento eran transferidos entre orientaciones (es decir que el sujeto adquiere una habilidad general) o si solo se observaba mejor en la tarea especifica entrenada.
-    
-    Este último experimento fue diseñado desconociendo cuan largo debía ser el entrenamiento para que se observara algún efecto, por esta razón se realizó una medición con un numero limitado de sujetos y se analizó los resultados obtenidos antes de continuar la medición. De los datos medidos observamos que contrariamente a lo esperado, no se dio un proceso de aprendizaje continuo en el tiempo que mostrar una mejora mayor a mayor tiempo entrenado. Observamos que hay algún proceso por el cual los sujetos (todos excepto uno) mejoran mucho tras concluir la primer instancia de entrenamiento, y luego no mejoran más. Al menos en una medida perceptible en los tiempo medidos. En forma complementaria no se logró observar una mejora clara del desempeño de los sujetos cuando realizaron los sucesivos niveles de evaluación en orientaciones diferentes. A su vez se observó que todos los conjuntos de sujetos, entrenaran o no presentaron una mejora a la hora de repetir las mediciones. 
-    
-    Todos estos resultados juntos permiten sugerir (más allá de que el numero de sujetos es muy limitado y cualquier resultado carece de validez estadística) que la presencia del feedback desencadena algún tipo de entendimiento que mejora en forma cualitativa el desempeño de los sujetos y que la posterior presencia del feedback no induce nuevas mejoras. Por el contrario los sujetos que no son expuestos al feedback probablemente tengan menos propensión a realizar este cambio cualitativo, por lo que las mediciones en los sujetos no entrenados resulten peores, pero siempre en mejoras. 
-    
-    Con estos resultados a la vista resulta claro que el proceso de medición ideado debe ser revisado, pues el entrenamiento (al menos en los términos planteados hasta ahora), no parece ser producto de una acumulación de experiencia sino de la presencia de ciertos elementos que le permitan a los sujetos adquirir la habilidad de distinguir los estímulos y sus propiedades geométricas. 
-    
-    Dado que cada vez hay mayores indicios de que la capacidad de distinguir las características geométricas no se adquieren en forma continua, ni dependen en forma continua con la orientación cabe preguntarse cual es el origen cualitativo de esta distinción y tratar de enfocar futuros trabajo en este aspecto. Para ellos probablemente tenga sentido generar experimentos de corta duración donde se haga variar el sistema de entrenamiento para encontrar cuando y por qué éste sucede, antes de seguir buscando cuales son los efectos del mismo.
+\clearpage
     
     
+\section{Agradecimientos}    
+
+    Es difícil al terminar la tesis saber donde empezó el camino que llega hasta acá y todas las cosas que hicieron al camino posible. Creo que lo primero a lo que tengo que agradecer es a haber tenido la suerte de hacer una carrera que me gusta, y poder trabajar de algo relacionado que me gusta tanto o más: la docencia. Esa pasión, el estímulo que me dieron desde chico, y las posibilidades materiales para haber llegado hasta acá se las tengo que agradecer a mi papa y mi mama. Sin ellos nada de esto hubiese sido posible. También tengo que agradecer al resto mi familia, mis hermanas, que desde siempre se bancaron mis comentarios nerds insoportables, mi abuela que se viene bancando que viva en su casa, los tios y primos que siempre que nos vemos me escuchan hablar de las mismas cosas de la facultad y a la parte más nueva de la familia, Irene, que casi desde el momento que entré en la carrera me incluyó en su casa como si hubiese sido parte de la familia desde siempre. 
     
+    No puedo dejar de mencionar a los amigos de la secundaria que quedaron para toda la vida, esos que vinieron antes de la facultad, y con los que pese a las distancias que el tiempo impuso (en algunos casos posta muy lejana) nos seguimos viendo menos seguido de lo que deberíamos. Fran, Chalu, Lucre, Ro, Max, Fofi, Nanu. 
     
+    A todos los amigos que vinieron después, a los del dos, con los que alguna vez curse materias cuando pensaba ser geólogo o biólogo, y los que finalmente me acompañaron cuando me decidí por física. Porque tener amigos físicos es importante. A Juli, Ari, Mario, Gaby, Mechi, Marian, Sabri, Nahue, Leo, Nahue, pp, Nahue, Pablo, Fer, Andres, Mariana, Norbi, y como no una mención especial para Jose. A todos esos amigos que vinieron después, de a poco, en los viajes, por los pasillos, o cursando materias cuando ya los demás se habían recibido, a Jule, Fede, Esteban, Damian, Esteban, Juanita, Belen, Fiore, Mati, El Mono, Flor, El Ruso, Leo, Batman, Lucho, Bruno, Chechu, Agus, Nico y toda la banda de gente que entró después de mi a la carrera (incluyendo a unos cuantos que tuve de alumnos en el CBC) con los que compartimos un montón de momentos juntos. A los más grandes que marcaron el camino de la FIFA, a los que vienen a jugar a la pelota o tomar cervezas en deportes, con los que armamos actividades y toda la interminable lista de gente que hace que venir a la facu sea algo placentero y amigable. 
     
+    A la gente del labo, con quienes terminé compartiendo casi dos años de trabajo diario. Antes que nada a Mariano, por haberme aceptado como tesista, por haberme estimulado a asumir desafíos que nunca había imaginado que pudiera realizar y por haber depositado plena confianza en mi capacidad de trabajo. A Andy porque sin él y su infinita capacidad de compartir su tiempo y ayudar ésta tesis no seria ésta tesis, y porque sin las discusiones con él acerca de la política (y la vida) sería una persona mucho menos autocrítica. A todos los demás que me enseñaron lo que es trabajar en ciencia día a día, a Ceci, Andre, Mati, Diego, Andres, Diego, Tami, Juli, Julia, Chu, Caro, Agus, Belen, Oli, Meli, Lean, Vero, todos los que ya no están, los nuevos, y los que aparecen a veces. Porque me recibieron bárbaro, me enseñaron un montón, y porque son con quienes aprendí lo que es compartir un lugar de trabajo de la mejor forma. Los primeros a los que voy a extrañar.
     
+    A los docentes, con los que curse y con los que di clases, de los que aprendí la mayor parte de las cosas que sé, en especial dos con quienes tuve el placer de cursar, a Martinez con quien hice las dos primeras materias de la carrera, y me flasheo con su mirada absolutamente física y escéptica del mundo, y a Piegaia con quien hice la última, y me mostró la pasión con que se puede enseñar y transmitir incluso las cosas más complicadas y ajenas a mi interés cotidiano.
+
+    Quiero también agradecer a todos los que hacen que la facultad sea lo que es. A todos los que dedican (y dedicaron) mucho de su tiempo para hacer de la facultad un lugar mejor, a los compañeros de militancia de Sinergia que marcaron mis primeros años acá dentro, a Ithu, Sango, Vero, Kiu, Lucas, Lore, Lau, Euge, Nico, Ana, Emi, Cyn, Lu, Amy, Guille, Noe, Beck, Vani, Z, Pablo, Pablo, Augusto y a todos los que desde otros claustros o sin compartir el día a día de la agrupación participaron de la construcción del mismo proyecto de facultad. A los que desde el trabajo diario de la gestión hicieron que muchas de las ideas que teníamos se pudieran llevar a la práctica, en espacial a Aliaga (aunque se haya enojado por algunas cosas que dije) porque admiro la dedicación y honestidad con que se dedicó a la tarea de dirigir la facultad durante muchos años. A todos con los que hoy en día, en un contexto políticamente diferente, seguimos compartiendo espacios de militancia transversales a los claustros y la universidad.
+    
+    Por último, no se puede terminar una carrera en la Universidad de Buenos Aires sin agradecer al pueblo, el que nos banca, a todos los que día a día trabajan y con su trabajo sostienen el sistema universitario nacional, público y gratuito, a todos los que pese a no tener la oportunidad de cursar una carrera universitaria, deberían tenerla, pero en cambio hacen que otros la tengamos.
+    
+
     
     
 
@@ -1222,36 +1366,38 @@ Levitt, H. C. C. H. "Transformed up down methods in psychoacoustics." The Journa
 \clearpage
 
 \section{Anexos}
-\subsection{Descripción de las clases que conforman a la plataforma con la que se realizó y construyo los experimentos} \label{anexo:Clases}
+\subsection{Descripción de las clases que conforman a la plataforma con la que se realizó los experimentos} \label{anexo:Clases}
 
+    En este anexo se enumeran las clases presentes en la versión final del software utilizado para construir los estímulos, los niveles y ejecutar los experimento. Este anexo es un detalle de la información disponible en la sección \ref{seccion:software}
+    
     \begin{itemize}
         \item \textit{\textbf{com.turin.tur.main.screens}}
         \begin{itemize}
             \item \textbf{AbstractGameScreen:} Es una clase genérica (copiada de un ejemplo en internet) que sirve para implementar pantallas en videojuegos. Al ser una clase abstracta no implementa ningún método por si misma, sino que fuerza a todas las pantallas a que tengan definidos los métodos correspondientes. 
             \item \textbf{InstructionScreen:} Diseño de una pantalla con instrucciones que se escribió pensando en una ejecución de los experimentos fuera de laboratorio donde la explicación de la tarea a realizar tenía que darla la misma aplicación.
-            \item \textbf{MenuScreen:} Pantalla principal de la aplicación (ver figura \ref{fig:Pantallas1}). A partir de la información de los niveles disponibles así como de la información de lo ya realizado por el sujeto habilita al usuario a realizar los niveles que correspondan. En la ultima versión del experimento, además se implemento un sistema por el cual la aplicación reconocía en que sesion del entrenamiento se encontraba el sujeto y por lo tanto ajustaba los niveles disponibles según correspondiera a los tests iniciales o finales o al proceso de entrenamiento. 
+            \item \textbf{MenuScreen:} Pantalla principal de la aplicación (ver figura \ref{fig:Pantallas1}). A partir de la información de los niveles disponibles así como de la información de lo ya realizado por el sujeto habilita al usuario a realizar los niveles que correspondan. En la última versión del experimento, además se implementó un sistema por el cual la aplicación reconocía en que sesión del entrenamiento se encontraba el sujeto y por lo tanto ajustaba los niveles disponibles según correspondiera a los tests iniciales o finales o al proceso de entrenamiento. 
             \item \textbf{LevelScreen:} Pantalla en la que se desarrolla la secuencia de trials. En si misma no hace mucho excepto cargar el LevelController y el LevelRender encargados de manipular el contenido del nivel. 
-            \item \textbf{ResultsScreen:} Pantalla que fue diseñada como devolución al usuario de su desempeño en el nivel realizado (ver figura \ref{fig:Pantallas1}). Esta pantalla tenia sentido en tanto pensabamos un diseño de la aplicación compatible con experimentos masivos y en contextos externos al laboratorio en donde había que darle una devolución al usuario y además comprobar si había superado los requerimientos básicos del nivel realizado. Salvo en una etapa inicial del proyecto esta pantalla fue discontinuada. 
+            \item \textbf{ResultsScreen:} Pantalla que fue diseñada como devolución al usuario de su desempeño en el nivel realizado (ver figura \ref{fig:Pantallas1}). Esta pantalla tenía sentido en tanto pensabamos un diseño de la aplicación compatible con experimentos masivos y en contextos externos al laboratorio en donde había que darle una devolución al usuario y además comprobar si había superado los requerimientos básicos del nivel realizado. Salvo en una etapa inicial del proyecto esta pantalla fue discontinuada. 
         \end{itemize}
         
-        \item \textit{\textbf{com.turin.tur.obsoleto.Stadistics:}} En este paquete quedaron guardadas las herramientas necesarias para realizar los cálculos estadísticos realizados al finalizar los niveles en la versión preliminar en la que se mostraba la pantalla de resultados. La idea era que el programa pudiera calcular en función del desempeño del usuario si estaba preparado o no para pasar de nivel. Para eso debía comparar los resultados contra distribuciones estadísticas y revisar que el buen desempeño no fuera producto del azar. Como LibGDX esta pensado para desarrollar videojuegos este tipo de cálculos no vienen incluidos entre las librerías que soporta (y al ser necesaria la ejecución en tiempo real eventualmente en celulares o internet no podíamos usar opciones disponibles solo para PC externas al paquete LibGDX), por lo que debimos resolver y escribir funciones estadísticas típicas del calculo de distribuciones (pero en nuestro caso con numero variable de opciones por trial). Todo esto quedo obsoleto al decidir que los experimentos se realizarían en un entorno tradicional de laboratorio. 
+        \item \textit{\textbf{com.turin.tur.obsoleto.Stadistics:}} En este paquete quedaron guardadas las herramientas necesarias para realizar los cálculos estadísticos realizados al finalizar los niveles en la versión preliminar en la que se mostraba la pantalla de resultados. La idea era que el programa pudiera calcular en función del desempeño del usuario si estaba preparado o no para pasar de nivel. Para eso debía comparar los resultados contra distribuciones estadísticas y revisar que el buen desempeño no fuera producto del azar. Como LibGDX esta pensado para desarrollar videojuegos este tipo de cálculos no vienen incluidos entre las librerías que soporta (y al ser necesaria la ejecución en tiempo real eventualmente en celulares o internet no  se podían usar opciones disponibles solo para PC externas al paquete LibGDX), por lo que se debió resolver y escribir funciones estadísticas típicas del cálculo de distribuciones (pero en nuestro caso con número variable de opciones por trial). Todo esto quedo obsoleto al decidir que los experimentos se realizarían en un entorno tradicional de laboratorio. 
         
         \item \textit{\textbf{com.turin.tur.main.diseno:} Este paquete incluye todas las clases accesorias que hacen a la manipulación del contenido de la aplicación en forma de objetos y cuyo contenido es cargado por el diseño general de los niveles y el LevelController}.
         \begin{itemize}
             \item \textbf{ExperimentalObject:} Clase que guarda la información del objeto experimental (estímulo y toda su información conceptual asociada). Así como métodos para cargar la información desde los archivos "meta", "mp3" o "atlas" almacenados en disco. 
-            \item \textbf{Boxes:} Clase que se encarga de la manipulación de los ExperimentalObject según el contexto. Cada caja carga un objeto experimental, pero según se trate de un trial de tutorial, de entrenamiento o de test se comporta diferente. En los trials de tutorial, al seleccionar una caja (TrainingBox) se activa la reproducción del sonido correspondiente, en los trials de test hay dos tipos de cajas diferentes, la del estimulo (StimuliBox) y la de las respuestas (OptionBox). La del estimulo no es seleccionable y reproduce en forma automatica el sonido correspondiente a su contenido (y muestra una imagen predeterminada de signo de interrogación (ver figura \ref{fig:Pantallas2}), en cambio las cajas de respuesta muestran la imagen correspondiente a su contenido (que puede ser una categoría abstracta o una figura y al ser seleccionadas solo activan el paso de trial (previa respuesta de feedback si correspondiera).  
-            \item \textbf{RunningSound:} Clase que se carga junto al nivel y que se encarga de manipular la reproducción de los sonidos provenientes de los estímulos. Se creo una clase aparte para evitar reproducciones simultaneas y para poder pausar, iniciar y detener las reproducciones de sonido de manera unificada. 
+            \item \textbf{Boxes:} Clase que se encarga de la manipulación de los ExperimentalObject según el contexto. Cada caja carga un objeto experimental, pero según se trate de un trial de tutorial, de entrenamiento o de test se comporta diferente. En los trials de tutorial, al seleccionar una caja (TrainingBox) se activa la reproducción del sonido correspondiente, en los trials de test hay dos tipos de cajas diferentes, la del estímulo (StimuliBox) y la de las respuestas (OptionBox). La del estímulo no es seleccionable y reproduce en forma automática el sonido correspondiente a su contenido (y muestra una imagen predeterminada de signo de interrogación (ver figura \ref{fig:Pantallas2}), en cambio las cajas de respuesta muestran la imagen correspondiente a su contenido (que puede ser una categoría abstracta o una figura y al ser seleccionadas solo activan el paso de trial (previa respuesta de feedback si correspondiera).  
+            \item \textbf{RunningSound:} Clase que se carga junto al nivel y que se encarga de manipular la reproducción de los sonidos provenientes de los estímulos. Se creó una clase aparte para evitar reproducciones simultaneas y para poder pausar, iniciar y detener las reproducciones de sonido de manera unificada. 
             \item \textbf{TouchInfo:} Clase que crea con cada toque en pantalla. Almacena la información de las coordenadas (tanto en pantalla como en el espacio geometricos de representacion del la aplicacion), y del objeto que fue tocado, junto a la información contextual en que sucedio el toque. Esta clase se creo en forma independiente para poder realizar un seguimiento exaustivo de la actividad que realiza el sujeto y poder enviar al servidor paquetes de datos con toda la información de lo sucedido de forma de poder recrear la actividad del sujeto por completo. Sin embargo el volumen de información generado resultó desproporcionado y finalmente se envio un registro mucho menor de la actividad manipulada a traves de la clase Trial.
             \item \textbf{Session:} Es la clase encargada de manipular toda la información relacionada a la información global de la ejecusión del programa. Incluye la información del usuario, lo métodos para crear un usuario nuevo, el registro de niveles realizados, fases (días de entrenamiento) experimentales, e información de versiones del código y de los recursos manipulados. 
             \item \textbf{MedidosDeConfianza:} Implementa la interfaz gráficas, el registro y los métodos necesarios para incluir en los trials un reporte de confianza en la respuesta dada. En un momento consideramos incluir esta medición para observar los efectos del entrenamiento en la confianza reportada, pero luego a partir de problemas de incompatibilidad entre los diseños experimentales excluimos del diseño general esta implementación. 
-            \item \textbf{Trial:} Clase que engloba toda la información correspondiente a un trial. Tiene métodos para poder cargar desde los archivos de configuración el diseño correspondiente a cada trial (listado de estímulos, tipo de trial, disposición en pantalla) y para crear las correspondientes cajas (Boxes) en pantalla. Durante el proceso de creación de estímulos y niveles se instancian todos los posibles trials a realizar y vuelcan a disco de manera que en tiempo de ejecución puedan ser cargados por la lógica del diseño experimental incluida en los niveles.
-            \item \textbf{LevelOLD:} Estructura obsoleta de un estadio inicial del desarrollo, cuando el diseño de los niveles era mas sencillo y no ameritaba un empaquetado aparte. 
+            \item \textbf{Trial:} Clase que engloba toda la información correspondiente a un trial. Tiene métodos para poder cargar desde los archivos de configuración el diseño correspondiente a cada trial (listado de estímulos, tipo de trial, disposición en pantalla) y para crear las correspondientes cajas (Boxes) en pantalla. Durante el proceso de creación de estímulos y niveles se instancian todos los posibles trials a realizar y vuelcan al disco de manera que en tiempo de ejecución puedan ser cargados por la lógica del diseño experimental incluida en los niveles.
+            \item \textbf{LevelOLD:} Estructura obsoleta de un estadio inicial del desarrollo, cuando el diseño de los niveles era más sencillo y no ameritaba un empaquetado aparte. 
             
         \end{itemize}
         
-         \item \textit{\textbf{com.turin.tur.main.logic:} Este paquete contiene dos clases estandar pensadas para el loop principal de un videojuego. Una se encarga de manipular los eventos y otra de actualizar los gráficos.}.
+         \item \textit{\textbf{com.turin.tur.main.logic:} Este paquete contiene dos clases estandar pensadas para el loop principal de un videojuego. Una se encarga de manipular los eventos y otra de actualizar los gráficos}.
          \begin{itemize}
-             \item \textbf{LevelController:} Esta clase intercepta todos los comandos (click, toque en pantalla o presiones de teclado) que realiza el usuario y desencadena eventos en consecuencia. Puede alternar el estado de la aplicación entre diferentes estados (esperando respuesta, pantalla en blanco entre trial y trial, etc) y según el estado en que se encuentra el programa responder a diferentes estímulos. En cada iteración detecta toque en pantalla y genera los TouchInfo correspondientes que son enviados a la clase Trial si se toca algún Box adecuado. Tambien cheque constantemente el estado del trial y del RunningSound para activar el cambio de trial o la finalización del nivel cuando corresponda. Esta clase es la que interactúa con los métodos principales de los Levels para preguntarle que corresponde hacer en casa ocasión. 
+             \item \textbf{LevelController:} Esta clase intercepta todos los comandos (click, toque en pantalla o presiones de teclado) que realiza el usuario y desencadena eventos en consecuencia. Puede alternar el estado de la aplicación entre diferentes estados (esperando respuesta, pantalla en blanco entre trial y trial, etc.) y según el estado en que se encuentra el programa responder a diferentes estímulos. En cada iteración detecta toque en pantalla y genera los TouchInfo correspondientes que son enviados a la clase Trial si se toca algún Box adecuado. También chequea constantemente el estado del trial y del RunningSound para activar el cambio de trial o la finalización del nivel cuando corresponda. Esta clase es la que interactúa con los métodos principales de los Levels para preguntarle qué corresponde hacer en casa ocasión. 
              \item \textbf{LevelRender:} En cada iteración del LevelControler se desencadena la actualización de los gráficos en pantalla a través de esta clase. La clase además de graficar los elementos principales del trial le envía un evento a los Boxes y al RunningSound para que actualicen su estado (mover el indicador de reproducción en el Box que suena, indicar si debe mostrarse o no feedback, o regular el loop automático de los sonidos de estímulo)
          \end{itemize}
         
@@ -1259,27 +1405,27 @@ Levitt, H. C. C. H. "Transformed up down methods in psychoacoustics." The Journa
         \begin{itemize}
             \item \textbf{Level:} Clase abstracta que es implementada por todos los niveles a modo de interfaz para asegurar que dispongan de los métodos necesarios para el funcionamiento del programa. También incluye todas las subclases y métodos comunes que permiten generar estructuras conceptuales en forma automática en el Builder. 
             \item \textbf{LevelEjemplos:} Nivel que sirve para realizar el tutorial inicial. Este nivel no mide nada, simplemente es una secuencia de trials fija en los que se muestran estímulos que pueden ser reproducidos para escuchar su correspondiente sonido y comprender la lógica del vOICe. Esta clase incluye su propio constructor que crea los archivos y estímulos correspondientes al nivel utilizando las herramiendas del empaqueado Builder. 
-            \item \textbf{LevelUmbralStatic:} Esta clase es la responsable de la creación de toda la estructura de datos necesaria para hacer experimentos del tipo detección de umbral (como los que terminamos haciendo). La logica con que se generan los niveles y recursos se detalla más adelante
-            \item \textbf{LevelUmbral:} Esta clase maneja la dinámica interna de todos los niveles de tipo umbral en tiempo de ejecusión. Para eso cuenta la información de todos los estímulos disponibles para mostrar en dicho nivel, los trials correspondientes a cada estimulo, y la lógica con que debe indicar al LevelController los estímulos a mostrar (que se detalla en la sección \ref{seccion:staircase}). También tiene implementados los métodos que permiten que el LevelController le pase los eventos frente a los cuales actuar. Esta clase es la que observa si el Box tocado por el usuario se corresponde con la respuesta adecuada, y la que lleva el registro del desempeño del sujeto que es enviado a Internet al finalizar cada nivel. 
+            \item \textbf{LevelUmbralStatic:} Esta clase es la responsable de la creación de toda la estructura de datos necesaria para hacer experimentos del tipo detección de umbral (como los que se terminaron haciendo). La lógica con que se generan los niveles y recursos se detalla más adelante.
+            \item \textbf{LevelUmbral:} Esta clase maneja la dinámica interna de todos los niveles de tipo umbral en tiempo de ejecusión. Para eso cuenta la información de todos los estímulos disponibles para mostrar en dicho nivel, los trials correspondientes a cada estímulo, y la lógica con que debe indicar al LevelController los estímulos a mostrar (que se detalla en la sección \ref{seccion:staircase}). También tiene implementados los métodos que permiten que el LevelController le pase los eventos frente a los cuáles actuar. Esta clase es la que observa si el Box tocado por el usuario se corresponde con la respuesta adecuada, y la que lleva el registro del desempeño del sujeto que es enviado a Internet al finalizar cada nivel. 
         \end{itemize}
         
-        \item \textit{\textbf{com.turin.tur.main.util.builder:} Este paquete incluye todos los mecanismo y herramientas necesarias para construir la lista de estímulos y archivos que cada nivel requiere. Que construir esta definido en el paquete Level. La lógica detallada con que se contruyen los niveles se detalla en la sección \ref{seccion:builder}}
+        \item \textit{\textbf{com.turin.tur.main.util.builder:} Este paquete incluye todos los mecanismo y herramientas necesarias para construir la lista de estímulos y archivos que cada nivel requiere. Qué construir está definido en el paquete Level. La lógica detallada con que se contruyen los niveles se detalla en la sección \ref{seccion:builder}}
         \begin{itemize}
-            \item \textbf{PcBuild:} Esta clase se inicializa solo si la aplicación esta ejecutandose en una PC y si esta activada el modo correspondientes en la configuración general del programa. Es el punto de partida para la construcción de niveles y recursos e incluye algunos métodos de chequeo generales (verifica que las versiones del software sean adecuadas, que no se sobreescriban cosas viejas, etc). 
+            \item \textbf{PcBuild:} Esta clase se inicializa solo si la aplicación esta ejecutandose en una PC y si esta activada el modo correspondientes en la configuración general del programa. Es el punto de partida para la construcción de niveles y recursos e incluye algunos métodos de chequeo generales (verifica que las versiones del software sean adecuadas, que no se sobreescriban cosas viejas, etc.) 
             \item \textbf{Textos:} Construye todos los recursos que no son gráficos, sino categorías conceptuales (que por el programa son tratados como un recurso más). Básicamente crea un cuadro de texto por cada categoría conceptual a la que pueden pertenecer los estímulos. 
             \item \textbf{Builder:} Es la clase que ejecuta los métodos de creación de estímulos y de niveles existentes en los Levels. Permite crear unos u otros por separado (esto es porque durante el desarrollo, frente a cada cambio, no siempre hacia falta reconstruir todo).
-            \item \textbf{Imagenes:} Es la clase que manipula cada imagen creada. Cuando el generador de estímulos crea una imagen, debe especificar las coordenadas de cada linea, a partir de ello esta clase crea los archivos SVG y la informacion complementaria almacenada en los archivos "meta"
-            \item \textbf{SVGtoMP3:} Es la clase que tranforma cada archivo SVG en su archivo de audio correspondientes segun se describe en la seccion \ref{seccion:SVG}
+            \item \textbf{Imagenes:} Es la clase que manipula cada imagen creada. Cuando el generador de estímulos crea una imagen, debe especificar las coordenadas de cada línea, a partir de ello esta clase crea los archivos SVG y la información complementaria almacenada en los archivos "meta"
+            \item \textbf{SVGtoMP3:} Es la clase que tranforma cada archivo SVG en su archivo de audio correspondientes según se describe en la sección \ref{seccion:SVG}
         \end{itemize}
         
-        \item \textit{\textbf{com.turin.tur.main.util:} Paquete que engloba herramientas utilizadas a lo largo de todo el codigo.}
+        \item \textit{\textbf{com.turin.tur.main.util:} Paquete que engloba herramientas utilizadas a lo largo de todo el código.}
         \begin{itemize}
-            \item \textbf{Assets:} Esta clase maneja los recursos visuales utilizados que no son específicos de cada nivel. Por una cuestión de manejo eficiente de memoria en celulares conviene englobar todas las imágenes en un solo bitmap (llamado atlas) y que el mismo sea cargado en memoria (y descargado cuando la apliacion pierde el foco) en forma conjunta.
-            \item \textbf{LevelAssets:} Cumple una función equivalente a Assets pero con las cosas especificas de cada nivel. Además se incluyo acá la carga en memoria de los archivos mp3. Es importante controlar el proceso de carga en memoria de los archivos de audio para evitar desfazajes entre el momento en que el programa asume que se inicio el audio (o el trial) y el momento en que realmente comienza.
-            \item \textbf{CamaraHelper:} Esta es una clase típica de programación en LibGDX que se encarga de manipular los aspectos geometricos de la representación en pantalla. Permite realizar un cambio de perspectiva global que simule el movimiento de una cámara con la que se ven los objetos. No utilizamos ninguna de estas opciones (excepto las básicas de cámara fija) pero era necesario su uso para compatibilizar el código con ejemplos típicos de la programación en este entorno.
+            \item \textbf{Assets:} Esta clase maneja los recursos visuales utilizados que no son específicos de cada nivel. Por una cuestión de manejo eficiente de memoria en celulares conviene englobar todas las imágenes en un solo bitmap (llamado atlas) y que el mismo sea cargado en memoria (y descargado cuando la apliación pierde el foco) en forma conjunta.
+            \item \textbf{LevelAssets:} Cumple una función equivalente a Assets pero con las cosas especificas de cada nivel. Además se incluyó acá la carga en memoria de los archivos mp3. Es importante controlar el proceso de carga en memoria de los archivos de audio para evitar desfazajes entre el momento en que el programa asume que se inició el audio (o el trial) y el momento en que realmente comienza.
+            \item \textbf{CamaraHelper:} Esta es una clase típica de programación en LibGDX que se encarga de manipular los aspectos geométricos de la representación en pantalla. Permite realizar un cambio de perspectiva global que simule el movimiento de una cámara con la que se ven los objetos. No se utilizó ninguna de estas opciones (excepto las básicas de cámara fija) pero era necesario su uso para compatibilizar el código con ejemplos típicos de la programación en este entorno.
             \item \textbf{FileHelper:} Clase encargada del acceso a disco (o memoria interna) en los diferentes sistemas operativos. Como el entorno de programación permite ejecutar el programa en diferentes sistemas operativos con diferentes estructuras y permisos para leer y escribir conviene tener estos métodos en una clase aparte. 
             \item \textbf{Constants:} En esta clase se intentó centralizar todo tipo de constantes que hicieran el funcionamiento del programa en general, desde la versión del código hasta las disposiciones posibles de los Boxes en pantalla. 
-            \item \textbf{Internet:} Esta clase se encarga de todo lo que tenga que ver con el envío de datos de registro a Internet (y su respaldo en disco). Como las comunicaciones con internet demandan tiempos largos en comparación con los tiempos de ejecución de los códigos y no queríamos que la aplicación se detuviera al realizar cada envío, debimos incluir la creación de hilos (threads) paralelos de programación para que todo lo que tuviera que ver con el manejo de Internet se ejecutar en simultaneo al resto de la aplicación, e interactuara correctamente sin crear conflictos en el uso de recursos o el registro de los datos.
+            \item \textbf{Internet:} Esta clase se encarga de todo lo que tenga que ver con el envío de datos de registro a Internet (y su respaldo en disco). Como las comunicaciones con internet demandan tiempos largos en comparación con los tiempos de ejecución de los códigos y no se  quería que la aplicación se detuviera al realizar cada envío, se debió incluir la creación de hilos (threads) paralelos de programación para que todo lo que tuviera que ver con el manejo de Internet se ejecutara en simultaneo al resto de la aplicación, e interactuara correctamente sin crear conflictos en el uso de recursos o el registro de los datos.
         \end{itemize}
         
         \item \textit{\textbf{com.turin.tur.wave:} Este paquete no fue programado por nosotros sino que fue la mejor opción compatible con nuestras necesidades que encontramos disponible en internet \url{http://www.labbookpages.co.uk/audio/javaWavFiles.html} para poder codificar el audio generado al formato wav.}
@@ -1290,7 +1436,7 @@ Levitt, H. C. C. H. "Transformed up down methods in psychoacoustics." The Journa
     
 \subsection{Código de la última implementación del StairCase} \label{anexo:staircase}
 
- \begin{lstlisting}[caption=Definicion de la clase donde se almacena la información del StairCase]
+ \begin{lstlisting}[caption=Definición de la clase donde se almacena la información del StairCase]
  
 static class Dinamica {
 		protected Estimulo estimuloActivo;
